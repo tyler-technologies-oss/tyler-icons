@@ -1,0 +1,23 @@
+{
+  "conversionType": "files",
+  "srcFiles": ["./svg-icons/**/*.svg"],
+  "outputDirectory": "./dist",
+  "interfaceName": "ITylerIcon",
+  "modelFileName": "tyler-icons.model",
+  "delimiter": "SNAKE",
+  "typeName": "TylerIconNames",
+  "prefix": "tylIcon",
+  "fileName": "tyler-icons.model",
+  "iconsFolderName": "icons",
+  "exportCompleteIconSet": true,
+  "optimizeForLazyLoading": true,
+  "additionalModelFile": "./demo/dist",
+  "svgoConfig": {
+    "plugins": [
+      {
+        "cleanupAttrs": true
+      }
+    ]
+  },
+  "compileSources": true
+}

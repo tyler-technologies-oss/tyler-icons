@@ -1,0 +1,29 @@
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #e0e0e0;
+  background-color: var(--mdc-theme-background);
+}
+
+.icon-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 250px);
+  gap: 16px;
+}
+
+.icon-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 200px;
+  min-width: 200px;
+  border-radius: 4px;
+  border: 1px solid var(--mdc-theme-border-color);
+}
+
+.icon-card svg {
+  height: 24px;
+  width: 24px;
+  margin-bottom: 8px;
+}
