@@ -22,5 +22,25 @@ After installing the `@tylertech/tyler-icons` package into your project, you can
 the registry:
 
 ```ts
-import { tylIcon360 }
+import { tylIcon360 } from '@tylertech/tyler-icons';
+import { TylerIconRegistry } from "@tylertech/tyler-components-web';
+
+TylerIconRegistry.define([tylIcon360, tylIconFace]);
 ```
+
+ Now you can use this icon name with the `<tcw-icon>` component:
+
+ ```html
+ <tcw-icon name="face"></tcw-icon>
+ ```
+
+## Non-TCW usage
+
+If you aren't using TCW, you will need to use a different means for rendering the icons from this package. Each icon is exported with its
+name and the SVG structure as a `string`. You can then use that SVG content to convert to HTML manually.
+
+## Missing an icon?
+
+This is a Tyler-wide icon library, and we want to make sure we ease the lives of people using icons as well as share our icons in a common
+format. If there is an icon missing, please submit an issue to get it added. We have third-party icons as well as custom Tyler owned icons
+that are distributed through this library and we'd be happy to add any that are missing for your team!
