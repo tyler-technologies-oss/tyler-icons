@@ -8,7 +8,7 @@ icon library that can be imported into applications on a per-icon basis as neede
 To get started developing in this repository, follow these steps:
 
 1. Install dependencies: `npm install`
-2. [optional] Add any **new** icons to the `svg-icons` directory. 
+2. Update any `.svg` in the `svg-icons` directory (if applicable).
 3. Serve the demo site to test the icons: `npm run serve`
 4. To build the npm package, run the following: `npm run build`
 
