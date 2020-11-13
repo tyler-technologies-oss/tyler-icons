@@ -8,9 +8,12 @@
   "sideEffects": false,
   "scripts": {
     "build": "svg-to-ts && npm run copy-assets",
+    "webpack": "webpack",
+    "webpack:watch": "npm run webpack -- --watch",
     "copy-assets": "cpx package.json dist && cpx README.md dist",
     "changelog": "standard-changelog -i CHANGELOG.md -k package.json",
-    "serve": "browser-sync start --server --files '*.html,*.css,*.ts,*.js' --start-path /demo"
+    "serve": "browser-sync start --server --files \"demo/**/*.html,demo/**/*.css,demo/**/**.ts,demo/**/*.js\" --start-path /demo",
+    "start": "npm run build && npm-run-all --parallel webpack:watch serve"
   },
   "keywords": [
     "tyler",
@@ -26,6 +29,7 @@
     "browser-sync": "^2.26.13",
     "cpx": "^1.5.0",
     "http-server": "^0.12.3",
+    "npm-run-all": "^4.1.5",
     "standard-changelog": "^2.0.27",
     "svg-to-ts": "^5.7.1",
     "webpack": "^5.4.0",

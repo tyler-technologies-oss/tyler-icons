@@ -1,4 +1,4 @@
-import { completeIconSet, ITylerIcon, tylIcon360 } from '@tylertech/tyler-icons';
+import { completeIconSet, ITylerIcon } from '@tylertech/tyler-icons';
 
 console.log('Complete set', completeIconSet);
 
