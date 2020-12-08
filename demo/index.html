@@ -14,8 +14,18 @@
       <tcw-omnibar slot="header" title-text="Tyler Icons">
         <tcw-omnibar-search slot="center">
           <input type="text" placeholder="Search..." />
+          <tcw-icon-button>
+            <button type="button" id="clear-button" class="tyler-icons">clear</button>
+          </tcw-icon-button>
         </tcw-omnibar-search>
       </tcw-omnibar>
+      <tcw-toolbar slot="body-header">
+        <tcw-chip-set type="choice" slot="start" id="icon-set-options">
+          <tcw-chip value="standard" selected>Standard</tcw-chip>
+          <tcw-chip value="extended">Extended</tcw-chip>
+          <tcw-chip value="custom">Custom</tcw-chip>
+        </tcw-chip-set>
+      </tcw-toolbar>
       <div slot="body" style="padding: 16px;">
         <tcw-card style="width: 960px; --tyl-card-height: auto;">
           <h2 slot="header" class="tyl-typography--title">Icons</h2>

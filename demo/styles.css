@@ -5,9 +5,15 @@ body {
   background-color: var(--mdc-theme-background);
 }
 
+div[slot=body] {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
 .icon-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 250px);
+  grid-template-columns: repeat(auto-fit, 150px);
   gap: 16px;
 }
 
@@ -16,10 +22,18 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  min-height: 200px;
-  min-width: 200px;
+  min-height: 150px;
+  min-width: 150px;
   border-radius: 4px;
   border: 1px solid var(--mdc-theme-border-color);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 10px;
+}
+
+h2 {
+  margin-top: 0;
 }
 
 .icon-card svg {

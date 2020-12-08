@@ -1,24 +1,35 @@
 {
   "name": "@tylertech/tyler-icons",
-  "version": "0.2.0",
+  "version": "1.0.0-beta.2",
   "description": "The tree-shakable Tyler SVG icon library.",
-  "main": "index.js",
-  "module": "index.js",
-  "typings": "index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "build": "svg-to-ts && npm run copy-assets",
-    "webpack": "webpack",
-    "webpack:watch": "npm run webpack -- --watch",
-    "copy-assets": "cpx package.json dist && cpx README.md dist",
+    "build": "npm-run-all clean optimize:svg svg-to-ts compile:icons copy:package-assets clean:build generate:metadata",
+    "svg-to-ts": "npm-run-all --parallel svg-to-ts:custom svg-to-ts:extended svg-to-ts:standard",
+    "svg-to-ts:custom": "svg-to-ts --config .custom-svg-to-tsrc",
+    "svg-to-ts:extended": "svg-to-ts --config .extended-svg-to-tsrc",
+    "svg-to-ts:standard": "svg-to-ts --config .standard-svg-to-tsrc",
+    "optimize:svg": "svgo -f ./svg/ -o dist/svg/ -r --enable removeDimensions --disable removeTitle",
+    "compile:icons": "tsc --project tsconfig-build.json",
+    "clean": "npm-run-all --parallel clean:tyler-icons clean:svg clean:build",
+    "clean:svg": "rimraf dist/svg/",
+    "clean:tyler-icons": "rimraf dist/@tylertech/tyler-icons/",
+    "clean:build": "rimraf .build",
+    "serve": "browser-sync start --server --files \"demo/**/*.html,demo/**/*.css,demo/**/**.ts,demo/**/*.js\" --ignore \"demo/webpack.config.js\" --start-path /demo",
+    "start": "npm run build && npm-run-all --parallel webpack:demo:watch serve",
+    "webpack:demo": "webpack --config ./demo/webpack.config.js",
+    "webpack:demo:watch": "npm run webpack:demo -- --watch",
+    "copy:package-assets": "cpx \".build/**/*.d.ts\" dist/@tylertech/tyler-icons && cpx package.json dist/@tylertech/tyler-icons && cpx README.md dist/@tylertech/tyler-icons",
     "changelog": "standard-changelog -i CHANGELOG.md -k package.json",
-    "serve": "browser-sync start --server --files \"demo/**/*.html,demo/**/*.css,demo/**/**.ts,demo/**/*.js\" --start-path /demo",
-    "start": "npm run build && npm-run-all --parallel webpack:watch serve"
+    "generate:metadata": "node ./scripts/generate-icon-metadata.js"
   },
   "keywords": [
     "tyler",
     "icons",
-    "svg"
+    "svg",
+    "custom",
+    "extended",
+    "standard"
   ],
   "author": "Kieran Nichols <kieran.nichols@tylertech.com",
   "license": "ISC",
@@ -30,8 +41,9 @@
     "cpx": "^1.5.0",
     "http-server": "^0.12.3",
     "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
     "standard-changelog": "^2.0.27",
-    "svg-to-ts": "^5.7.1",
+    "svg-to-ts": "^6.0.0",
     "webpack": "^5.4.0",
     "webpack-cli": "^4.2.0"
   }

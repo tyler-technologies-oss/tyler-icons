@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "es2015",
+    "moduleResolution": "node",
+    "removeComments": true,
+    "declaration": false,
+    "noEmitOnError": false,
+    "noImplicitAny": true,
+    "allowJs": true,
+    "rootDir": ".build",
+    "outDir": "dist/@tylertech/tyler-icons/"
+  },
+  "include": [
+    ".build/**/*"
+  ]
+}

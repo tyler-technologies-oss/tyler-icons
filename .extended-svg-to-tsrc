@@ -1,0 +1,24 @@
+{
+  "conversionType": "files",
+  "srcFiles": ["./dist/cdn/extended/*.svg"],
+  "outputDirectory": ".build/extended",
+  "interfaceName": "ITylerIcon",
+  "modelFileName": "tyler-icons.model",
+  "delimiter": "SNAKE",
+  "typeName": "TylerIconsExtendedNames",
+  "prefix": "tylIcon",
+  "fileName": "tyler-icons.model",
+  "iconsFolderName": "icons",
+  "exportCompleteIconSet": true,
+  "optimizeForLazyLoading": true,
+  "additionalModelFile": "./demo/dist/extended",
+  "svgoConfig": {
+    "plugins": [
+      {
+        "removeDimensions": true,
+        "removeViewBox": false
+      }
+    ]
+  },
+  "compileSources": true
+}
