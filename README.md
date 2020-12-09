@@ -62,4 +62,10 @@ To get started developing in this repository, follow these steps:
 
 ### Generating icon metadata
 
-Icon metadata (JSON format) can also be generated from this repository. This is included 
+Icon metadata (JSON format) can also be generated from this repository:
+
+```bash
+npm run generate:metadata
+```
+
+> This is included in the CDN as well as the npm package.
