@@ -8,6 +8,7 @@ console.log('Standard set:', standardIcons);
 console.log('Extended set:', extendedIcons);
 console.log('Custom set:', customIcons);
 
+const countLabel = document.querySelector('#icon-count') as HTMLElement;
 let selectedIconSet = 'standard';
 
 function buildIconCard(icon: ITylerIcon): HTMLDivElement {
@@ -42,6 +43,7 @@ function buildIconList(iconSet: any[]): void {
   const iconList = document.querySelector('.icon-list') as HTMLElement;
   iconList.innerHTML = '';
   iconSet.forEach((icon: ITylerIcon) => iconList.appendChild(buildIconCard(icon)));
+  countLabel.textContent = `${iconSet.length}`;
 }
 
 function buildFilteredIconList(): void {
