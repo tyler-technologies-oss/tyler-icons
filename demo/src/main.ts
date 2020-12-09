@@ -1,8 +1,12 @@
-import { completeIconSet as standardIcons, ITylerIcon } from '@tylertech/tyler-icons/standard';
-import { completeIconSet as extendedIcons } from '@tylertech/tyler-icons/extended';
-import { completeIconSet as customIcons } from '@tylertech/tyler-icons/custom';
+import * as standardIconsModule from '@tylertech/tyler-icons/standard';
+import * as extendedIconsModule from '@tylertech/tyler-icons/extended';
+import * as customIconsModule from '@tylertech/tyler-icons/custom';
 import { IChipComponent, IChipSetComponent, IChipSelectEventData } from '@tylertech/tyler-components-web';
 import { debounce } from '@tyler-components-web/core';
+
+const standardIcons = Object.values(standardIconsModule);
+const extendedIcons = Object.values(extendedIconsModule);
+const customIcons = Object.values(customIconsModule);
 
 console.log('Standard set:', standardIcons);
 console.log('Extended set:', extendedIcons);
@@ -10,6 +14,8 @@ console.log('Custom set:', customIcons);
 
 const countLabel = document.querySelector('#icon-count') as HTMLElement;
 let selectedIconSet = 'standard';
+
+declare type ITylerIcon = standardIconsModule.ITylerIconStandard | extendedIconsModule.ITylerIconExtended | customIconsModule.ITylerIconCustom
 
 function buildIconCard(icon: ITylerIcon): HTMLDivElement {
   const iconCard = document.createElement('div');

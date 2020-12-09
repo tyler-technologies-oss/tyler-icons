@@ -4,7 +4,7 @@
     "module": "es2015",
     "moduleResolution": "node",
     "removeComments": true,
-    "declaration": false,
+    "declaration": true,
     "noEmitOnError": false,
     "noImplicitAny": true,
     "allowJs": true,

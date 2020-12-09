@@ -1,15 +1,13 @@
 {
-  "conversionType": "files",
+  "conversionType": "constants",
   "srcFiles": ["./dist/svg/custom/*.svg"],
   "outputDirectory": ".build/custom",
-  "interfaceName": "ITylerIcon",
-  "modelFileName": "tyler-icons.model",
+  "interfaceName": "ITylerIconCustom",
   "delimiter": "SNAKE",
   "typeName": "TylerIconsCustomNames",
   "prefix": "tylIcon",
-  "fileName": "tyler-icons.model",
+  "fileName": "index",
   "iconsFolderName": "icons",
-  "exportCompleteIconSet": true,
   "optimizeForLazyLoading": true,
   "additionalModelFile": "./demo/dist/custom",
   "svgoConfig": {
