@@ -34,11 +34,15 @@ TylerIconRegistry.define([tylIconAccountCircle, tylIconFace, tylIconAccountDetai
  <tcw-icon name="face"></tcw-icon>
  ```
 
- You can also load images dynamically (without registering them) by using the external CDN:
+ You can also load icons dynamically (without registering them locally) by using the external CDN. Just set the `external` attribute to enable the component to make a request to the CDN to fetch the icon data dynamically (if not exists in the local registry):
 
  ```html
- <tcw-icon name="face" external="standard"></tcw-icon>
+ <tcw-icon name="face" external externalType="standard"></tcw-icon>
  ```
+ 
+ > Just be sure to specify the correct set name in the value of the `externalType` attribute. Valid values: "standard" (default), "extended", "custom".
+ 
+ A property by the name of `externalUrlBuilder` exists on the component which can be set to a callback that will be executed when the component is creating the URL to fetch the icon from. This gives you control over hosting the icons yourself elsewhere from the public CDN if desired.
 
 ## Non-TCW usage
 
