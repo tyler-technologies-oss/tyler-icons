@@ -1,6 +1,6 @@
 {
   "conversionType": "files",
-  "srcFiles": ["./dist/cdn/extended/*.svg"],
+  "srcFiles": ["./dist/svg/extended/*.svg"],
   "outputDirectory": ".build/extended",
   "interfaceName": "ITylerIcon",
   "modelFileName": "tyler-icons.model",

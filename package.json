@@ -1,10 +1,10 @@
 {
   "name": "@tylertech/tyler-icons",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-rc.0",
   "description": "The tree-shakable Tyler SVG icon library.",
   "sideEffects": false,
   "scripts": {
-    "build": "npm-run-all clean optimize:svg svg-to-ts compile:icons copy:package-assets clean:build generate:metadata",
+    "build": "npm-run-all clean optimize:svg svg-to-ts compile:icons generate:metadata copy:package:assets clean:build",
     "svg-to-ts": "npm-run-all --parallel svg-to-ts:custom svg-to-ts:extended svg-to-ts:standard",
     "svg-to-ts:custom": "svg-to-ts --config .custom-svg-to-tsrc",
     "svg-to-ts:extended": "svg-to-ts --config .extended-svg-to-tsrc",
@@ -19,7 +19,11 @@
     "start": "npm run build && npm-run-all --parallel webpack:demo:watch serve",
     "webpack:demo": "webpack --config ./demo/webpack.config.js",
     "webpack:demo:watch": "npm run webpack:demo -- --watch",
-    "copy:package-assets": "cpx \".build/**/*.d.ts\" dist/@tylertech/tyler-icons && cpx package.json dist/@tylertech/tyler-icons && cpx README.md dist/@tylertech/tyler-icons",
+    "copy:package:assets": "npm-run-all copy:package:typings copy:package:metadata copy:package:package.json copy:package:readme",
+    "copy:package:typings": "cpx \".build/**/*.d.ts\" dist/@tylertech/tyler-icons",
+    "copy:package:metadata": "cpx dist/tyler-icons-metadata-svg.json dist/@tylertech/tyler-icons",
+    "copy:package:package.json": "cpx package.json dist/@tylertech/tyler-icons",
+    "copy:package:readme": "cpx README.md dist/@tylertech/tyler-icons",
     "changelog": "standard-changelog -i CHANGELOG.md -k package.json",
     "generate:metadata": "node ./scripts/generate-icon-metadata.js"
   },

@@ -1,6 +1,6 @@
 {
   "conversionType": "files",
-  "srcFiles": ["./dist/cdn/standard/*.svg"],
+  "srcFiles": ["./dist/svg/standard/*.svg"],
   "outputDirectory": ".build/standard",
   "interfaceName": "ITylerIcon",
   "modelFileName": "tyler-icons.model",
