@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 
 const ROOT_DIR = path.resolve(__dirname, '../');
-const SVG_DIR = path.join(ROOT_DIR, 'svg');
+const SVG_DIR = path.join(ROOT_DIR, 'dist/svg');
 const OUTPUT_DIR = path.join(ROOT_DIR, 'dist');
 const OUTPUT_FILENAME = 'tyler-icons-metadata-svg';
 
@@ -30,8 +30,8 @@ function createMetadata(svgDir) {
 
   return [
     createMetadataFromIcons('Custom', customIcons),
-    createMetadataFromIcons('Extended', extendedIcons),
-    createMetadataFromIcons('Standard', standardIcons)
+    createMetadataFromIcons('Standard', standardIcons),
+    createMetadataFromIcons('Extended', extendedIcons)
   ];
 }
 
@@ -58,7 +58,8 @@ function iconsFromDir(startPath, icons = []) {
       return [...icons, ...fromDir(filename, filter, callback)];
     } else if (/\.svg$/.test(filename)) {
       const name = path.parse(filename).name;
-      icons.push(name);
+      const data = fs.readFileSync(filename, 'utf-8');
+      icons.push({ name, data });
     }
   }
 
