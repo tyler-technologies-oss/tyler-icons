@@ -1,3 +1,12 @@
+# [1.4.0](https://github.com/tyler-technologies/tyler-icons/compare/v1.3.0...v1.4.0) (2021-05-07)
+
+
+### Features
+
+* adding the new "edit_circle" icon ([ce35720](https://github.com/tyler-technologies/tyler-icons/commit/ce35720c05ab2bd1451baf353846391c84cbe281))
+
+
+
 # [1.3.0](https://github.com/tyler-technologies/tyler-icons/compare/v1.1.0...v1.3.0) (2021-05-04)
 
 
