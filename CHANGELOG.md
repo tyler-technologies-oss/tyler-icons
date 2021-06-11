@@ -1,3 +1,12 @@
+# [1.5.0](https://github.com/tyler-technologies/tyler-icons/compare/v1.4.0...v1.5.0) (2021-06-11)
+
+
+### Features
+
+* **icons:** add two week calendar icon ([6bc78b2](https://github.com/tyler-technologies/tyler-icons/commit/6bc78b275aff1cbf5e40559160cf147e8db24a88))
+
+
+
 # [1.4.0](https://github.com/tyler-technologies/tyler-icons/compare/v1.3.0...v1.4.0) (2021-05-07)
 
 
