@@ -1,3 +1,17 @@
+# [1.6.0](https://github.com/tyler-technologies/tyler-icons/compare/v1.5.0...v1.6.0) (2021-08-03)
+
+
+### Bug Fixes
+
+* **icons:** correct paths in cases icon ([2541c11](https://github.com/tyler-technologies/tyler-icons/commit/2541c1121648d3953c4f675ee609645f80362b7e))
+
+
+### Features
+
+* **icons:** add account multiple clock icon ([a95da9e](https://github.com/tyler-technologies/tyler-icons/commit/a95da9e37b130f9563036060f69007afdf53a4ae))
+
+
+
 # [1.5.0](https://github.com/tyler-technologies/tyler-icons/compare/v1.4.0...v1.5.0) (2021-06-11)
 
 
