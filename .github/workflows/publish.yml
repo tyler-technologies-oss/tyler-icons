@@ -7,6 +7,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: heinrichreimer/github-changelog-generator-action@v2.1.1
+        with:
+          token: ${{ secrets.CORPDEV_GITHUB_ACCESS_TOKEN }}
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
