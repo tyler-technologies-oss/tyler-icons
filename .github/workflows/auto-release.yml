@@ -18,6 +18,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   changelog:
+      needs: [semver]
       runs-on: ubuntu-latest
 
       strategy:
