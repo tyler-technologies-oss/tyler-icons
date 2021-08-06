@@ -72,5 +72,5 @@ Icon metadata (JSON format) can also be generated from this repository:
 npm run generate:metadata
 ```
 
+
 > This is included in the CDN as well as the npm package.
-> 
