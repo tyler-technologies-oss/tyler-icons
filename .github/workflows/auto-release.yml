@@ -33,6 +33,14 @@ jobs:
         release: ${{ needs.semver.name }}
         update: |
           ./package.json
+    - name: Create Package.json Pull Request
+      uses: peter-evans/create-pull-request@v3
+      with:
+        commit-message: update package.json 
+        title: Update Package.json 
+        body: Update the package.json version to match the release
+        branch: update-package-json
+        base: master
   
   changelog:
     needs: [semver, updatepackage]
@@ -65,24 +73,13 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
     - run: npm run changelog
-    - uses: actions/checkout@v2
-    - name: Bump version
-      id: version
-      uses: vemel/nextversion@main
-      with:
-        path: ./package.json
-        type: semver
-        result: ${{ github.event.inputs.bump }}
-        release:  ${{ steps.step1.outputs.test }}
-        update: |
-          ./package.json
-    - name: Create Pull Request
+    - name: Create Changelog Pull Request
       uses: peter-evans/create-pull-request@v3
       with:
-        commit-message: update changelog and package.json version
-        title: Update Changelog and Package Version 
-        body: Update changelog to reflect release changes, along with syncing the package.json version with the release version
-        branch: update-changelog-and-package-json
+        commit-message: update changelog 
+        title: Update Changelog 
+        body: Update changelog to reflect release changes
+        branch: update-changelog
         base: master
     env:
       ARTIFACTORY_TOKEN: "${{ secrets.CORPDEV_ARTIFACTORY_TOKEN }}"
