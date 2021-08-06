@@ -74,9 +74,3 @@ npm run generate:metadata
 
 
 > This is included in the CDN as well as the npm package.
-
-
-
-
-
-
