@@ -35,7 +35,7 @@ jobs:
           ./package.json
   
   changelog:
-    needs: [semver]
+    needs: [semver, updatepackage]
     runs-on: ubuntu-latest
 
     strategy:
@@ -79,10 +79,10 @@ jobs:
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3
       with:
-        commit-message: update changelog
-        title: Update Changelog
-        body: Update changelog to reflect release changes
-        branch: update-changelog
+        commit-message: update changelog and package.json version
+        title: Update Changelog and Package Version 
+        body: Update changelog to reflect release changes, along with syncing the package.json version with the release version
+        branch: update-changelog-and-package-json
         base: master
     env:
       ARTIFACTORY_TOKEN: "${{ secrets.CORPDEV_ARTIFACTORY_TOKEN }}"
