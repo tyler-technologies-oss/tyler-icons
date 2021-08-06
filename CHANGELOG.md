@@ -1,3 +1,7 @@
+# 1.6.0 (2021-08-06)
+
+
+
 # [1.6.0](https://github.com/tyler-technologies/tyler-icons/compare/v1.5.0...v1.6.0) (2021-08-03)
 
 
