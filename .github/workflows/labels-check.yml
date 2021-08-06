@@ -1,0 +1,14 @@
+name: valid-labels-check
+on:
+  pull_request:
+    branches: [master, main]
+    types: [opened, labeled, unlabeled, synchronize]
+
+jobs:
+  labels-check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: jesusvasquez333/verify-pr-label-action@v1.3.1
+      with:
+          github-token: '${{ secrets.GITHUB_TOKEN }}'
+          valid-labels: 'type: breaking, type: feature, type: bug, type: maintenance, type: docs, type: dependencies, type: security'
