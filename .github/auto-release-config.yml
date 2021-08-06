@@ -1,5 +1,5 @@
 name-template: 'v$RESOLVED_VERSION'
-tag-template: '$RESOLVED_VERSION'
+tag-template: 'v$RESOLVED_VERSION'
 version-template: '$MAJOR.$MINOR.$PATCH'
 version-resolver:
   major:
@@ -13,7 +13,6 @@ version-resolver:
       - 'type: bug'
       - 'type: documentation'
   default: 'minor'
-
 categories:
   - title: 'New'
     label: 'type: enhancement'
@@ -24,4 +23,5 @@ categories:
 
 template: |
   # What's Changed
+  
   $CHANGES
