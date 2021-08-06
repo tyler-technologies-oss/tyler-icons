@@ -1,3 +1,14 @@
+# [1.6.0](https://github.com/tyler-technologies/tyler-icons/compare/v1.6.1...v1.6.0) (2021-08-06)
+
+
+### Features
+
+* added a line ([c76c0af](https://github.com/tyler-technologies/tyler-icons/commit/c76c0af9c87c42d832c8e0c5b9642fb58dbadf25))
+* added a line 5 ([92281d6](https://github.com/tyler-technologies/tyler-icons/commit/92281d6322b4b839be483b5527f740c6e2035362))
+* added a line2 ([e6490b7](https://github.com/tyler-technologies/tyler-icons/commit/e6490b7025a2049f35d66438df46b1f997b850df))
+
+
+
 # [1.6.0](https://github.com/tyler-technologies/tyler-icons/compare/v1.5.0...v1.6.0) (2021-08-03)
 
 
