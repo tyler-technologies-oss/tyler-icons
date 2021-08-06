@@ -43,7 +43,7 @@ jobs:
         base: master
   
   changelog:
-    needs: [semver, updatepackage]
+    needs: [semver]
     runs-on: ubuntu-latest
 
     strategy:
