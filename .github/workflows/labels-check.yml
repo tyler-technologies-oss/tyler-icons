@@ -11,4 +11,4 @@ jobs:
     - uses: jesusvasquez333/verify-pr-label-action@v1.3.1
       with:
           github-token: '${{ secrets.GITHUB_TOKEN }}'
-          valid-labels: 'type: breaking, type: feature, type: bug, type: maintenance, type: docs, type: dependencies, type: security'
+          valid-labels: 'type: enhancement, type: bug, type: documentation'
