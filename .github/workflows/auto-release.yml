@@ -29,10 +29,6 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
-
-      - uses: oleksiyrudenko/gha-git-credentials@v2.1.0
-        with:
-          token: "${{ secrets.GITHUB_TOKEN }}"
       - name: Set NPM package version
         id: set_npm_package_version
         env:
@@ -43,7 +39,11 @@ jobs:
           npm version --allow-same-version 1.7.0
           git add "./*package.json" #Gets all package.json files which might have been modified
           git commit -m "Update NPM package(s) version"
-          git push
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
 
     # updatepackage:
     #   needs: [semver]
