@@ -33,18 +33,11 @@ jobs:
           release: ${{ needs.semver.name }}
           update: |
             ./package.json
-      - name: Set NPM package version
-        id: set_npm_package_version
-        env:
-          ARTIFACTORY_USERNAME: ${{ secrets.CORPDEV_ARTIFACTORY_USERNAME }}
-          ARTIFACTORY_TOKEN: ${{ secrets.PAT_TOKEN }}
-        shell: bash
-        run: |
-          git config --global user.name 'Package Updater'
-          git config --global user.email 'package-updater@users.noreply.github.com'
-          git add "package.json"
-          git commit -m "Update NPM package(s) version"
-          git push
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.PAT_TOKEN }}
+          branch: ${{ github.ref }}
 
     # changelog:
     #   needs: [semver]
