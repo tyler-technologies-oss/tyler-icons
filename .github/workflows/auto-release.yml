@@ -71,6 +71,8 @@ jobs:
       - run: npm ci
       - run: npm run changelog
       - run: touch test.txt
+      - run: git add test.txt
+      - run: git commit -m "test"
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
