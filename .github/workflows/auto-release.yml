@@ -117,7 +117,7 @@ jobs:
     #       title: Update Changelog
     #       body: Update changelog to reflect release changes
     #       branch: update-changelog
-    #       base: master
+    #       base: master 
       env:
         ARTIFACTORY_TOKEN: "${{ secrets.PAT_TOKEN }}"
         ARTIFACTORY_USERNAME: "${{ secrets.CORPDEV_ARTIFACTORY_USERNAME }}"
