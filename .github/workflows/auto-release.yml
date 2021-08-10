@@ -23,16 +23,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Bump version
-        id: version
-        uses: vemel/nextversion@main
-        with:
-          path: ./package.json
-          type: semver
-          result: ${{ github.event.inputs.bump }}
-          release: 1.7.0
-          update: |
-            ./package.json
+      - name: Set NPM package version
+        id: set_npm_package_version
+        env:
+          ARTIFACTORY_USERNAME: ${{ secrets.TYLERHUB_ARTIFACTORY_USERNAME }}
+          ARTIFACTORY_TOKEN: ${{ secrets.TYLERHUB_ARTIFACTORY_PASSWORD }}
+        shell: bash
+        run: |
+          npm version --allow-same-version 1.7.0
+          git add "./*package.json" #Gets all package.json files which might have been modified
+          git commit -m "Update NPM package(s) version"
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
