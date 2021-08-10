@@ -38,7 +38,6 @@ jobs:
           ARTIFACTORY_TOKEN: ${{ secrets.CORPDEV_ARTIFACTORY_TOKEN }}
         shell: bash
         run: |
-          cd ./projects/thub-angular-shared
           npm version --allow-same-version 1.7.0
           git config --global user.name 'Package Updater'
           git config --global user.email 'package-updater@users.noreply.github.com'
