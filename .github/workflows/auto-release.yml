@@ -30,7 +30,6 @@ jobs:
           ARTIFACTORY_TOKEN: ${{ secrets.TYLERHUB_ARTIFACTORY_PASSWORD }}
         shell: bash
         run: |
-          cd ./projects/thub-angular-shared
           npm version --allow-same-version ${{ env.VERSION_TAG }}
           git config --global user.name 'Package Updater'
           git config --global user.email 'package-updater@users.noreply.github.com'
