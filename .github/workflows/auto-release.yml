@@ -29,6 +29,11 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Load NPM
+        id: load_npm
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
       - name: Set NPM package version
         id: set_npm_package_version
         env:
