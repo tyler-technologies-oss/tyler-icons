@@ -86,6 +86,6 @@ jobs:
     #       branch: update-changelog
     #       base: master
     env:
-      ARTIFACTORY_TOKEN: "${{ secrets.CORPDEV_ARTIFACTORY_TOKEN }}"
+      ARTIFACTORY_TOKEN: "${{ secrets.PAT_TOKEN }}"
       ARTIFACTORY_USERNAME: "${{ secrets.CORPDEV_ARTIFACTORY_USERNAME }}"
       ARTIFACTORY_PASSWORD: "${{ secrets.CORPDEV_ARTIFACTORY_PASSWORD }}"
