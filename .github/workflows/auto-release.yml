@@ -30,7 +30,7 @@ jobs:
           path: ./package.json
           type: semver
           result: ${{ github.event.inputs.bump }}
-          release: ${{ needs.semver.name }}
+          release: 1.7.0
           update: |
             ./package.json
       - name: Push changes
