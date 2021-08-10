@@ -37,13 +37,11 @@ jobs:
         shell: bash
         run: |
           npm version --allow-same-version 1.7.0
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "GitHub Actions"
           git add "./*package.json" #Gets all package.json files which might have been modified
           git commit -m "Update NPM package(s) version"
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+          git push
 
     # updatepackage:
     #   needs: [semver]
