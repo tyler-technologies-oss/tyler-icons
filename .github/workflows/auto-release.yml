@@ -37,7 +37,7 @@ jobs:
         id: set_npm_package_version
         env:
           ARTIFACTORY_USERNAME: ${{ secrets.CORPDEV_ARTIFACTORY_USERNAME }}
-          ARTIFACTORY_TOKEN: ${{ secrets.CORPDEV_ARTIFACTORY_TOKEN }}
+          ARTIFACTORY_TOKEN: ${{ secrets.PAT_TOKEN }}
         shell: bash
         run: |
           git config --global user.name 'Package Updater'
