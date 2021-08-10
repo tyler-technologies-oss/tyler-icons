@@ -23,14 +23,23 @@ jobs:
   testpackageupdate:
     runs-on: ubuntu-latest
     steps:
+
+      - name: Checkout Source
+        id: checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Set NPM package version
         id: set_npm_package_version
         env:
-          ARTIFACTORY_USERNAME: ${{ secrets.TYLERHUB_ARTIFACTORY_USERNAME }}
-          ARTIFACTORY_TOKEN: ${{ secrets.TYLERHUB_ARTIFACTORY_PASSWORD }}
+          ARTIFACTORY_USERNAME: ${{ secrets.CORPDEV_ARTIFACTORY_USERNAME }}
+          ARTIFACTORY_TOKEN: ${{ secrets.CORPDEV_ARTIFACTORY_TOKEN }}
         shell: bash
         run: |
-          npm version --allow-same-version ${{ env.VERSION_TAG }}
+          cd ./projects/thub-angular-shared
+          npm version --allow-same-version 1.7.0
           git config --global user.name 'Package Updater'
           git config --global user.email 'package-updater@users.noreply.github.com'
           git add "./*package.json" #Gets all package.json files which might have been modified
