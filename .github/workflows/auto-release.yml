@@ -37,9 +37,7 @@ jobs:
       - run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "GitHub Actions"
-          npm version --allow-same-version ${{ github.event.release.tag_name }}
-          # git add "package.json"
-          # git commit -a -m "chore: update package.json to ${{ github.event.release.tag_name }}"
+          npm version --allow-same-version ${{ github.event.release.tag_name }} -m "chore: release ${{ github.event.release.tag_name }}"
       - name: Push Changes
         uses: ad-m/github-push-action@master
         with:
@@ -86,7 +84,8 @@ jobs:
       - run: npm run changelog
       - run: git config --global user.name "GitHub Actions"
       - run: git config --global user.email "GitHub Actions"
-      - run: "git commit -a -m 'chore: update changelog.md'"
+      - run: git add CHANGELOG.md
+      - run: "git commit -a -m 'chore: update CHANGELOG.md'"
       - name: Push Changes
         uses: ad-m/github-push-action@master
         with:
