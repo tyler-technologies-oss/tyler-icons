@@ -72,6 +72,8 @@ jobs:
       - run: npm run changelog
       - run: touch test.txt
       - run: git add test.txt
+      - run: git config --global user.name "GitHub Actions"
+      - run: git config --global user.email "GitHub Actions"
       - run: git commit -m "test"
       - name: Push changes
         uses: ad-m/github-push-action@master
