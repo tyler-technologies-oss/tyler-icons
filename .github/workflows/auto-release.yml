@@ -79,13 +79,15 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm ci
-      - run: git pull
-      - run: npm run changelog
-      - run: git config --global user.name "GitHub Actions"
-      - run: git config --global user.email "GitHub Actions"
-      - run: git add CHANGELOG.md
-      - run: "git commit -a -m 'chore: update CHANGELOG.md'"
+      - run: |
+          npm ci
+          git pull
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "GitHub Actions"
+          npm run changelog
+          sleep 5
+          git add CHANGELOG.md
+          git commit -a -m "chore: update CHANGELOG.md"
       - name: Push Changes
         uses: ad-m/github-push-action@master
         with:
