@@ -83,8 +83,7 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "GitHub Actions"
           npm run changelog
-          sleep 5
-          git add *
+          git add ./CHANGELOG.md
           git commit -m "chore: update CHANGELOG.md"
       - name: Push Changes
         uses: ad-m/github-push-action@master
