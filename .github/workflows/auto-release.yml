@@ -185,7 +185,7 @@ jobs:
           branch: ${{ github.ref }}
 
   changelog:
-    needs: [semver]
+    needs: [semver, updatepackage]
     runs-on: ubuntu-latest
 
     strategy:
