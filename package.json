@@ -1,6 +1,6 @@
 {
   "name": "@tylertech/tyler-icons",
-  "version": "1.6.3",
+  "version": "1.6.4",
   "description": "The tree-shakable Tyler SVG icon library.",
   "sideEffects": false,
   "scripts": {
