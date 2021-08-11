@@ -16,6 +16,7 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.PAT_TOKEN }}
+          ref: master
       - name: Cache node modules
         uses: actions/cache@v2
         env:
@@ -34,11 +35,11 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
       - run: |
-          npm version --allow-same-version ${{ github.event.release.tag_name }}
           git config --global user.name "GitHub Actions"
           git config --global user.email "GitHub Actions"
-          git add "package.json"
-          git commit -a -m "chore: update package.json to ${{ github.event.release.tag_name }}"
+          npm version --allow-same-version ${{ github.event.release.tag_name }}
+          # git add "package.json"
+          # git commit -a -m "chore: update package.json to ${{ github.event.release.tag_name }}"
       - name: Push Changes
         uses: ad-m/github-push-action@master
         with:
@@ -63,6 +64,7 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.PAT_TOKEN }}
+          ref: master
       - name: Cache node modules
         uses: actions/cache@v2
         env:
