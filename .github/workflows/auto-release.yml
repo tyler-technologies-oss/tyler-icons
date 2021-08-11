@@ -177,7 +177,7 @@ jobs:
             ./package.json
       - run: git config --global user.name "GitHub Actions"
       - run: git config --global user.email "GitHub Actions"
-      - run: git commit -a -m "[GitHub Actions] Update package.json to ${{ needs.semver.name }}"
+      - run: "git commit -a -m 'chore: update package.json to ${{ needs.semver.name }}'"
       - name: Push Changes
         uses: ad-m/github-push-action@master
         with:
@@ -218,7 +218,7 @@ jobs:
       - run: npm run changelog
       - run: git config --global user.name "GitHub Actions"
       - run: git config --global user.email "GitHub Actions"
-      - run: git commit -a -m "[GitHub Actions] Update changelog.md"
+      - run: "git commit -a -m 'chore: update changelog.md'"
       - name: Push Changes
         uses: ad-m/github-push-action@master
         with:
