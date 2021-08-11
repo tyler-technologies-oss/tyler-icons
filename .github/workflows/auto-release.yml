@@ -37,8 +37,8 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "GitHub Actions"
           npm version --allow-same-version ${{ github.event.release.tag_name }}
-          git add "package.json" #Gets all package.json files which might have been modified
-          git commit -a -m "chore: update package.json to ${{ github.event.release.tag_name }}"
+          # git add "package.json" #Gets all package.json files which might have been modified
+          # git commit  -m "chore: update package.json to ${{ github.event.release.tag_name }}"
       - name: Push Changes
         uses: ad-m/github-push-action@master
         with:
