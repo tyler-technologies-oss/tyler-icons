@@ -1,3 +1,4 @@
+
 name: auto-release
 
 on:
@@ -5,12 +6,100 @@ on:
     types: [published]
 
 jobs:
-  updatepackage:
+  semver:
     runs-on: ubuntu-latest
+    steps:
+      # Drafts your next Release notes as Pull Requests are merged into "master"
+      - uses: release-drafter/release-drafter@v5
+        with:
+          publish: false
+          prerelease: false
+          config-name: auto-release-config.yml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  updatepackage:
+      needs: [semver]
+      runs-on: ubuntu-latest
+      strategy:
+        matrix:
+          node-version: [14.x]
+          # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+      steps:
+        - uses: actions/checkout@v2
+          with:
+            fetch-depth: 0
+            token: ${{ secrets.PAT_TOKEN }}
+        - name: Cache node modules
+          uses: actions/cache@v2
+          env:
+            cache-name: cache-node-modules
+          with:
+            # npm cache files are stored in `~/.npm` on Linux/macOS
+            path: ~/.npm
+            key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+            restore-keys: |
+              ${{ runner.os }}-build-${{ env.cache-name }}-
+              ${{ runner.os }}-build-
+              ${{ runner.os }}-
+        - name: Use Node.js ${{ matrix.node-version }}
+          uses: actions/setup-node@v1
+          with:
+            node-version: ${{ matrix.node-version }}
+        - run: npm ci
+        - run: |
+            npm version --allow-same-version ${{ needs.semver.name }}
+            git config --global user.name "GitHub Actions"
+            git config --global user.email "GitHub Actions"
+            git add "package.json" #Gets all package.json files which might have been modified
+            git commit -a -m "chore: update package.json to ${{ needs.semver.name }}"
+        - name: Push Changes
+          uses: ad-m/github-push-action@master
+          with:
+            github_token: ${{ secrets.PAT_TOKEN }}
+            branch: ${{ github.ref }}
+      env:
+        ARTIFACTORY_TOKEN: "${{ secrets.CORPDEV_ARTIFACTORY_TOKEN }}"
+        ARTIFACTORY_USERNAME: "${{ secrets.CORPDEV_ARTIFACTORY_USERNAME }}"
+        ARTIFACTORY_PASSWORD: "${{ secrets.CORPDEV_ARTIFACTORY_PASSWORD }}"
+    # needs: [semver]
+    # runs-on: ubuntu-latest
+    # steps:
+    #   - uses: actions/checkout@v2
+    #     with:
+    #       fetch-depth: 0
+    #       token: ${{ secrets.PAT_TOKEN }}
+    #   # - name: Bump version
+    #   #   id: version
+    #   #   uses: vemel/nextversion@main
+    #   #   with:
+    #   #     path: ./package.json
+    #   #     type: semver
+    #   #     result: ${{ github.event.inputs.bump }}
+    #   #     release: ${{ needs.semver.name }}
+    #   #     update: |
+    #   #       ./package.json
+    #   - run: |
+    #       npm version --allow-same-version ${{ needs.semver.name }}
+    #       git config --global user.name "GitHub Actions"
+    #       git config --global user.email "GitHub Actions"
+    #       git add "package.json" #Gets all package.json files which might have been modified
+    #       git commit -a -m "chore: update package.json to ${{ needs.semver.name }}"
+    #   - name: Push Changes
+    #     uses: ad-m/github-push-action@master
+    #     with:
+    #       github_token: ${{ secrets.PAT_TOKEN }}
+    #       branch: ${{ github.ref }}
+
+  changelog:
+    needs: [semver, updatepackage]
+    runs-on: ubuntu-latest
+
     strategy:
       matrix:
         node-version: [14.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
     steps:
       - uses: actions/checkout@v2
         with:
@@ -34,65 +123,17 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
-      - run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "GitHub Actions"
-          npm version --allow-same-version ${{ github.event.release.tag_name }} -m "chore: release ${{ github.event.release.tag_name }}"
+      - run: npm run changelog
+      - run: git pull
+      - run: git config --global user.name "GitHub Actions"
+      - run: git config --global user.email "GitHub Actions"
+      - run: "git commit -a -m 'chore: update changelog.md'"
       - name: Push Changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.PAT_TOKEN }}
-          branch: master
-    env:
-      ARTIFACTORY_TOKEN: "${{ secrets.CORPDEV_ARTIFACTORY_TOKEN }}"
-      ARTIFACTORY_USERNAME: "${{ secrets.CORPDEV_ARTIFACTORY_USERNAME }}"
-      ARTIFACTORY_PASSWORD: "${{ secrets.CORPDEV_ARTIFACTORY_PASSWORD }}"
-
-  changelog:
-    needs: [updatepackage]
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [14.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-          token: ${{ secrets.PAT_TOKEN }}
+          branch: ${{ github.ref }}
           ref: master
-      - name: Cache node modules
-        uses: actions/cache@v2
-        env:
-          cache-name: cache-node-modules
-        with:
-          # npm cache files are stored in `~/.npm` on Linux/macOS
-          path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: |
-          npm ci
-          git pull
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "GitHub Actions"
-          npm run changelog
-          sleep 5
-          git add CHANGELOG.md
-          git commit -a -m "chore: update CHANGELOG.md"
-      - name: Push Changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.PAT_TOKEN }}
-          branch: master
     env:
       ARTIFACTORY_TOKEN: "${{ secrets.CORPDEV_ARTIFACTORY_TOKEN }}"
       ARTIFACTORY_USERNAME: "${{ secrets.CORPDEV_ARTIFACTORY_USERNAME }}"
