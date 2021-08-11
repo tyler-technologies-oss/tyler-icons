@@ -62,6 +62,7 @@ jobs:
         with:
           token: ${{ secrets.PAT_TOKEN }}
           ref: master
+          fetch-depth: 0
       - name: Cache node modules
         uses: actions/cache@v2
         env:
@@ -84,7 +85,7 @@ jobs:
           git config --global user.email "GitHub Actions"
           npm run changelog
           git add ./CHANGELOG.md
-          git commit -m "chore: update CHANGELOG.md"
+          git commit -m "chore: update changelog for ${{ github.event.release.tag_name }}"
       - name: Push Changes
         uses: ad-m/github-push-action@master
         with:
