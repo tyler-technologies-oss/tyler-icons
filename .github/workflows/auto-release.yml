@@ -84,6 +84,7 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "GitHub Actions"
           npm run changelog
+          sleep 10
           git add ./CHANGELOG.md
           git commit -m "chore: update changelog for ${{ github.event.release.tag_name }}"
       - name: Push Changes
