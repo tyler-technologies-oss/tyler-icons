@@ -52,6 +52,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+          token: ${{ secrets.PAT_TOKEN }}
       - name: Cache node modules
         uses: actions/cache@v2
         env:
@@ -119,7 +120,7 @@ jobs:
     #       title: Update Changelog
     #       body: Update changelog to reflect release changes
     #       branch: update-changelog
-    #       base: master 
+    #       base: master
       env:
         ARTIFACTORY_TOKEN: "${{ secrets.PAT_TOKEN }}"
         ARTIFACTORY_USERNAME: "${{ secrets.CORPDEV_ARTIFACTORY_USERNAME }}"
