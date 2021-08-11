@@ -26,19 +26,22 @@ jobs:
         with:
           fetch-depth: 0
           token: ${{ secrets.PAT_TOKEN }}
-      - name: Bump version
-        id: version
-        uses: vemel/nextversion@main
-        with:
-          path: ./package.json
-          type: semver
-          result: ${{ github.event.inputs.bump }}
-          release: ${{ needs.semver.name }}
-          update: |
-            ./package.json
-      - run: git config --global user.name "GitHub Actions"
-      - run: git config --global user.email "GitHub Actions"
-      - run: "git commit -a -m 'chore: update package.json to ${{ needs.semver.name }}'"
+      # - name: Bump version
+      #   id: version
+      #   uses: vemel/nextversion@main
+      #   with:
+      #     path: ./package.json
+      #     type: semver
+      #     result: ${{ github.event.inputs.bump }}
+      #     release: ${{ needs.semver.name }}
+      #     update: |
+      #       ./package.json
+      - run: |
+          npm version --allow-same-version ${{ needs.semver.name }}
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "GitHub Actions"
+          git add "package.json" #Gets all package.json files which might have been modified
+          git commit -a -m "chore: update package.json to ${{ needs.semver.name }}"
       - name: Push Changes
         uses: ad-m/github-push-action@master
         with:
