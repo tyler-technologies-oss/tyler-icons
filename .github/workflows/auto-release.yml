@@ -5,7 +5,7 @@ on:
     types: [published]
 
 jobs:
-  release_cleanup:
+  updatepackage:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -38,6 +38,9 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "GitHub Actions"
           npm version --allow-same-version ${{ github.event.release.tag_name }} -m "chore: release ${{ github.event.release.tag_name }}"
+          # npm run changelog
+          # git add ./CHANGELOG.md
+          # git commit -m "chore: update changelog for ${{ github.event.release.tag_name }}"
       - name: Push Changes
         uses: ad-m/github-push-action@master
         with:
