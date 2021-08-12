@@ -37,7 +37,7 @@ jobs:
       - run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "GitHub Actions"
-          npm run release --allow-same-version ${{ github.event.release.tag_name }} -m "chore: release ${{ github.event.release.tag_name }}"
+          npm run release -- --release-as ${{ github.event.release.tag_name }}
       - name: Push Changes
         uses: ad-m/github-push-action@master
         with:
