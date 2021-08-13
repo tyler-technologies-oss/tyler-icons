@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://github.com/tyler-technologies/tyler-icons/compare/v1.6.0...v1.7.0) (2021-08-13)
+
+
+### Features
+
+* added a line ([c76c0af](https://github.com/tyler-technologies/tyler-icons/commit/c76c0af9c87c42d832c8e0c5b9642fb58dbadf25))
+* added a line ([39f57af](https://github.com/tyler-technologies/tyler-icons/commit/39f57afe88947397cd05131bd36cf5dec62df7c9))
+* added a line ([454e3e1](https://github.com/tyler-technologies/tyler-icons/commit/454e3e1161c43fdd40fbe87ad4b006b51e9d9d41))
+* added a line ([1de4cae](https://github.com/tyler-technologies/tyler-icons/commit/1de4cae1ed8bda694aa00e01ef734e00ae38fd97))
+* added a line 34 ([74fa71a](https://github.com/tyler-technologies/tyler-icons/commit/74fa71ad1cf36532763d0e8d777f585aee0a2394))
+* added a line 35 ([8e67b9c](https://github.com/tyler-technologies/tyler-icons/commit/8e67b9ca344e85ea3fad67ed3fad776741e9cdc9))
+* added a line 5 ([92281d6](https://github.com/tyler-technologies/tyler-icons/commit/92281d6322b4b839be483b5527f740c6e2035362))
+* added a line2 ([bcbbf78](https://github.com/tyler-technologies/tyler-icons/commit/bcbbf781d142b5b4b63bd3cba0a1946ce983fb35))
+* added a line2 ([904d801](https://github.com/tyler-technologies/tyler-icons/commit/904d801c64b39146de30d0f14f66d6d8dcc0fef6))
+* added a line2 ([e6490b7](https://github.com/tyler-technologies/tyler-icons/commit/e6490b7025a2049f35d66438df46b1f997b850df))
+* added thing ([2978860](https://github.com/tyler-technologies/tyler-icons/commit/2978860c64f33e905244c27bbb513f6c52799667))
+* remove items ([4d2d5af](https://github.com/tyler-technologies/tyler-icons/commit/4d2d5af7a991602c003c015b7fc5199e2648c8be))
+* **icons:** add account multiple star icon ([3fd2add](https://github.com/tyler-technologies/tyler-icons/commit/3fd2add8d20d1fa72152f4ebed7d38748e241ccf))
+
+
+### Bug Fixes
+
+* remove test.txt file ([aaede3a](https://github.com/tyler-technologies/tyler-icons/commit/aaede3a31d6cc25ecd7a7bbc7e4caa250407d747))
+
 # [1.6.0](https://github.com/tyler-technologies/tyler-icons/compare/v1.5.0...v1.6.0) (2021-08-03)
 
 
