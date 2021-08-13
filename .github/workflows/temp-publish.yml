@@ -50,8 +50,9 @@ jobs:
       # ==== Update version and generate the changelog ====
       # =========================================
       - run: |
-          npm run build
+          ## remove the line underneath before pushing this to prod.
           npm run release -- --release-as 0.0.1-dev --skip.commit --skip.tag
+          npm run build
           npm publish dist/@tylertech/tyler-icons --registry https://tylertech.jfrog.io/tylertech/api/npm/forge-npm-local/
 
     env:
