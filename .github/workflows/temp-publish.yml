@@ -1,4 +1,4 @@
-name: auto-release
+name: temp-publish
 
 on:
   release:
