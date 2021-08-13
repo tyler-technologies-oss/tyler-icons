@@ -54,7 +54,7 @@ jobs:
           npm run release -- --release-as 0.0.1-dev --skip.commit --skip.tag
           npm publish dist/@tylertech/tyler-icons --registry https://tylertech.jfrog.io/tylertech/api/npm/forge-npm-local/
 
-        env:
-          ARTIFACTORY_TOKEN: "${{ secrets.CORPDEV_ARTIFACTORY_TOKEN }}"
-          ARTIFACTORY_USERNAME: "${{ secrets.CORPDEV_ARTIFACTORY_USERNAME }}"
-          ARTIFACTORY_PASSWORD: "${{ secrets.CORPDEV_ARTIFACTORY_PASSWORD }}"
+    env:
+      ARTIFACTORY_TOKEN: "${{ secrets.CORPDEV_ARTIFACTORY_TOKEN }}"
+      ARTIFACTORY_USERNAME: "${{ secrets.CORPDEV_ARTIFACTORY_USERNAME }}"
+      ARTIFACTORY_PASSWORD: "${{ secrets.CORPDEV_ARTIFACTORY_PASSWORD }}"
