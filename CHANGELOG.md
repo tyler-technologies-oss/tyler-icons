@@ -10,10 +10,6 @@ All notable changes to this project will be documented in this file. See [standa
 * **icons:** add account multiple star icon ([3fd2add](https://github.com/tyler-technologies/tyler-icons/commit/3fd2add8d20d1fa72152f4ebed7d38748e241ccf))
 
 
-### Bug Fixes
-
-* remove test.txt file ([aaede3a](https://github.com/tyler-technologies/tyler-icons/commit/aaede3a31d6cc25ecd7a7bbc7e4caa250407d747))
-
 # [1.6.0](https://github.com/tyler-technologies/tyler-icons/compare/v1.5.0...v1.6.0) (2021-08-03)
 
 
