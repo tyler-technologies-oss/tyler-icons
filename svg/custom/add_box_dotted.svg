@@ -1,6 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;">
+<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 24 24">
 <title>add_box_dotted</title>
-<path class="st0" d="M0,0h24v24H0V0z" fill="none"/>
 <polygon points="11,17 13,17 13,13 17,13 17,11 13,11 13,7 11,7 11,11 7,11 7,13 11,13 "/>
 <g>
 <rect x="3" y="7" width="2" height="2"/>
