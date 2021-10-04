@@ -1,3 +1,12 @@
+# [1.8.0](https://github.com/tyler-technologies/tyler-icons/compare/v0.0.1-dev...v1.8.0) (2021-10-04)
+
+
+### Features
+
+* **icons:** add custom add box icons ([d7de131](https://github.com/tyler-technologies/tyler-icons/commit/d7de1318f9b90347fedac54ab5516c361805a559))
+
+
+
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
