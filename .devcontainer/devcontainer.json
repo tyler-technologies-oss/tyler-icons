@@ -53,5 +53,7 @@
 	],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "sudo chown node node_modules && npm install"
+	"postCreateCommand": ["sudo", "chown", "node", "node_modules"],
+
+	"postAttachCommand": "printf \"%b\" \"\\n\" \"$(tput bold)$(tput smul)$(tput setaf 3)WARNING:$(tput sgr0) Do not delete the node_modules folder in this workspace. \\n If you need to clear out node_modules execute one of the following: \\n  $ rm -rf node_modules/* node_modules/.* \\n  $ make clean-nm \""
 }
