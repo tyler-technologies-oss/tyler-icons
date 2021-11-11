@@ -57,11 +57,37 @@ that are distributed through this library and we'd be happy to add any that are 
 
 ## Development
 
+### Developing inside a container
+
+This project supports vscode DevContainers to help streamline and standardize the local development process. To get started with DevContainers you'll need to ensure you're running the following on your local machine:
+
+- Docker
+- Visual Studio Code
+- VSCode Remote Development extension pack.
+
+See these [getting-started](https://code.visualstudio.com/docs/remote/containers#_installation) instructions for additional details.
+
+Once setup, VSCode should prompt with a notification that a DevContainer config file is recognized and suggest re-opening within a container.
+
+![devcontainer_notification](docs/img/devcontainer_notification.png)
+
+To manually re-open the project within a dev container, simply open the VSCode Command Palette (`F1`) and select **Remote-Containers: Reopen Folder in Container**.
+
+For more information on starting a development environment within a container see [Developing inside a Container](https://code.visualstudio.com/docs/remote/containers)
+
+#### DevContainers Performance Notes
+
+When opening this project in a DevContainer on a Windows or Mac operating system, you may experience poor disk performance due to their use of bind mounts. See the following article for additional information and tips on how you might [improve disk performance](https://code.visualstudio.com/remote/advancedcontainers/improve-performance).
+
+In situations where you're unable to make use of the WSL2 filesystem (Windows), or where you're using macOS, you'll experience the best performance by making use of the **Remote-Containers: Clone Repository in Container Volume** command within VSCode. See this [article](https://code.visualstudio.com/remote/advancedcontainers/improve-performance#_use-clone-repository-in-container-volume) for more information.
+
+### Build and Validate
+
 To get started developing in this repository, follow these steps:
 
 1. Install dependencies: `npm install`
 2. Update any `.svg` in the `svg` directory (if applicable).
-3. Serve the demo site to test the icons: `npm run serve`
+3. Serve the demo site to test the icons: `npm run start`
 4. To build the npm package, run the following: `npm run build`
 
 ### Generating icon metadata
