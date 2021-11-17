@@ -8,7 +8,10 @@
 		// Append -bullseye or -buster to pin to an OS version.
 		// Use -bullseye variants on local on arm64/Apple Silicon.
 		"args": { 
-			"VARIANT": "14"
+			"VARIANT": "14",
+			"ARTIFACTORY_REGISTRY": "https://tylertech.jfrog.io/artifactory/api/npm/npm/",
+			"ARTIFACTORY_TOKEN": "${localEnv:ARTIFACTORY_TOKEN}",
+			"ARTIFACTORY_USERNAME": "${localEnv:ARTIFACTORY_USERNAME}",
 		}
 	},
 
@@ -16,6 +19,7 @@
 		"GITHUB_TOKEN": "${localEnv:GITHUB_TOKEN}",
 		"ARTIFACTORY_TOKEN": "${localEnv:ARTIFACTORY_TOKEN}",
 		"ARTIFACTORY_USERNAME": "${localEnv:ARTIFACTORY_USERNAME}",
+		"CHROME_BIN": "/usr/bin/google-chrome-stable"
 	},
 
 	// Set *default* container specific settings.json values on container create.
@@ -32,7 +36,11 @@
 
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
-		"dbaeumer.vscode-eslint"
+		"dbaeumer.vscode-eslint",
+		"stylelint.vscode-stylelint",
+		"christian-kohler.npm-intellisense",
+		"mrmlnc.vscode-scss",
+		// todo: https://github.com/tyler-technologies/vscode-tcw-snippets
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.

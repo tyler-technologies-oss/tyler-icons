@@ -4,13 +4,25 @@
 ARG VARIANT="16-bullseye"
 FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:0-${VARIANT}
 
-# [Optional] Uncomment this section to install additional OS packages.
-# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-#     && apt-get -y install --no-install-recommends <your-package-list-here>
+# Install the key and debian repository for Chrome's stable branch
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
+    && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list
 
-# [Optional] Uncomment if you want to install an additional version of node using nvm
-# ARG EXTRA_NODE_VERSION=10
-# RUN su node -c "source /usr/local/share/nvm/nvm.sh && nvm install ${EXTRA_NODE_VERSION}"
+# Install Google Chrome
+RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+	&& apt-get -y install --no-install-recommends google-chrome-stable
 
-# [Optional] Uncomment if you want to install more global node packages
-# RUN su node -c "npm install -g <your-package-list -here>"
+# configure npm to use artifactory from local env
+ARG ARTIFACTORY_USERNAME
+ARG ARTIFACTORY_TOKEN
+ARG ARTIFACTORY_REGISTRY
+ENV ARTIFACTORY_USERNAME ${ARTIFACTORY_USERNAME}
+ENV ARTIFACTORY_TOKEN ${ARTIFACTORY_TOKEN}
+ENV ARTIFACTORY_REGISTRY ${ARTIFACTORY_REGISTRY}
+RUN echo "registry=${ARTIFACTORY_REGISTRY}\n \
+_auth=${ARTIFACTORY_TOKEN}\n \
+email=${ARTIFACTORY_USERNAME}\n \
+always-auth=true" >> ~/.npmrc
+
+# Install Angular CLI globally
+RUN su node -c "echo n | npm install -g @angular/cli"
