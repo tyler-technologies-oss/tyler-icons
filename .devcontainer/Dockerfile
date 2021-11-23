@@ -3,3 +3,7 @@
 # [Choice] Node.js version (use -bullseye variants on local arm64/Apple Silicon): 16, 14, 12, 16-bullseye, 14-bullseye, 12-bullseye, 16-buster, 14-buster, 12-buster
 ARG VARIANT="16-bullseye"
 FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:0-${VARIANT}
+
+# Add vscode-tcw-snippets
+RUN git clone https://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@github.com/tyler-technologies/vscode-tcw-snippets.git /home/node/.vscode-server/extensions/vscode-tcw-snippets
+RUN sudo chown -R node /home/node/
