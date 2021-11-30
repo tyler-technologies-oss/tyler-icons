@@ -1,5 +1,6 @@
 {
   "name": "@tylertech/tyler-icons",
+  "repository": "tyler-technologies/tyler-icons",
   "version": "1.8.0",
   "description": "The tree-shakable Tyler SVG icon library.",
   "sideEffects": false,
@@ -9,7 +10,7 @@
     "svg-to-ts:custom": "svg-to-ts --config .custom-svg-to-tsrc",
     "svg-to-ts:extended": "svg-to-ts --config .extended-svg-to-tsrc",
     "svg-to-ts:standard": "svg-to-ts --config .standard-svg-to-tsrc",
-    "optimize:svg": "svgo -f ./svg/ -o dist/svg/ -r --enable removeDimensions --disable removeTitle",
+    "optimize:svg": "svgo -q -f ./svg/ -o dist/svg/ -r --enable removeDimensions --disable removeTitle",
     "compile:icons": "tsc --project tsconfig-build.json",
     "clean": "npm-run-all --parallel clean:tyler-icons clean:svg clean:build",
     "clean:svg": "rimraf dist/svg/",
@@ -24,9 +25,9 @@
     "copy:package:metadata": "cpx dist/tyler-icons-metadata-svg.json dist/@tylertech/tyler-icons",
     "copy:package:package.json": "cpx package.json dist/@tylertech/tyler-icons",
     "copy:package:readme": "cpx README.md dist/@tylertech/tyler-icons",
-    "changelog": "standard-changelog -i CHANGELOG.md -k package.json",
+    "changelog": "auto changelog",
     "generate:metadata": "node ./scripts/generate-icon-metadata.js",
-    "release": "standard-version"
+    "release": "auto shipit"
   },
   "keywords": [
     "tyler",
@@ -36,21 +37,22 @@
     "extended",
     "standard"
   ],
-  "author": "Kieran Nichols <kieran.nichols@tylertech.com",
+  "author": "Kieran Nichols <kieran.nichols@tylertech.com>",
   "license": "ISC",
   "devDependencies": {
+    "@auto-it/conventional-commits": "^10.32.3",
     "@tylertech/tyler-components-web": "^1.4.0",
     "@webcomponents/webcomponentsjs": "^2.5.0",
+    "auto": "^10.32.3",
     "awesome-typescript-loader": "^5.2.1",
     "browser-sync": "^2.26.13",
     "cpx": "^1.5.0",
     "http-server": "^0.12.3",
     "npm-run-all": "^4.1.5",
     "rimraf": "^3.0.2",
-    "standard-changelog": "^2.0.27",
-    "standard-version": "^9.3.1",
     "svg-to-ts": "^6.0.0",
     "webpack": "^5.4.0",
     "webpack-cli": "^4.2.0"
-  }
+  },
+  "dependencies": {}
 }
