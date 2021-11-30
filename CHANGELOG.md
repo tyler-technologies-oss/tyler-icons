@@ -1,3 +1,22 @@
+# v1.9.0 (Tue Nov 30 2021)
+
+#### 🚀 Enhancement
+
+- feat: add checklist icon [#40](https://github.com/tyler-technologies/tyler-icons/pull/40) ([@samrichardsontylertech](https://github.com/samrichardsontylertech))
+
+#### 🐛 Bug Fix
+
+- chore: add initial build and release automation [#41](https://github.com/tyler-technologies/tyler-icons/pull/41) ([@kclarkey](https://github.com/kclarkey))
+- remove x and y attributes from checklist svg [#40](https://github.com/tyler-technologies/tyler-icons/pull/40) ([@samrichardsontylertech](https://github.com/samrichardsontylertech))
+- add title to checklist icon [#40](https://github.com/tyler-technologies/tyler-icons/pull/40) ([@samrichardsontylertech](https://github.com/samrichardsontylertech))
+
+#### Authors: 2
+
+- Ken Clarke ([@kclarkey](https://github.com/kclarkey))
+- Sam Richardson ([@samrichardsontylertech](https://github.com/samrichardsontylertech))
+
+---
+
 # [1.8.0](https://github.com/tyler-technologies/tyler-icons/compare/v0.0.1-dev...v1.8.0) (2021-10-04)
 
 
