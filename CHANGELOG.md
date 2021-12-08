@@ -1,3 +1,15 @@
+# v1.9.1 (Wed Dec 08 2021)
+
+#### 🐛 Bug Fix
+
+- fix(build): update publish automation to package correct assets [#42](https://github.com/tyler-technologies/tyler-icons/pull/42) ([@kclarkey](https://github.com/kclarkey))
+
+#### Authors: 1
+
+- Ken Clarke ([@kclarkey](https://github.com/kclarkey))
+
+---
+
 # v1.9.0 (Tue Nov 30 2021)
 
 #### 🚀 Enhancement
