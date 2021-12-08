@@ -27,7 +27,8 @@
     "copy:package:readme": "cpx README.md dist/@tylertech/tyler-icons",
     "changelog": "auto changelog",
     "generate:metadata": "node ./scripts/generate-icon-metadata.js",
-    "release": "auto shipit"
+    "release": "auto shipit",
+    "postversion": "cd dist/@tylertech/tyler-icons && npm version $npm_package_version --no-git-tag-version --no-commit-hooks --ignore-scripts"
   },
   "keywords": [
     "tyler",
@@ -40,6 +41,7 @@
   "author": "Kieran Nichols <kieran.nichols@tylertech.com>",
   "license": "ISC",
   "devDependencies": {
+    "@auto-canary/npm": "^10.33.0--canary.2115.25151.0",
     "@auto-it/conventional-commits": "^10.32.3",
     "@tylertech/tyler-components-web": "^1.4.0",
     "@webcomponents/webcomponentsjs": "^2.5.0",
@@ -53,6 +55,5 @@
     "svg-to-ts": "^6.0.0",
     "webpack": "^5.4.0",
     "webpack-cli": "^4.2.0"
-  },
-  "dependencies": {}
+  }
 }
