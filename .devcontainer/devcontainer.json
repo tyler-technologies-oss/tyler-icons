@@ -9,6 +9,7 @@
 		// Use -bullseye variants on local on arm64/Apple Silicon.
 		"args": { 
 			"VARIANT": "14",
+			"GITHUB_TOKEN": "${localEnv:GITHUB_TOKEN}",
 		}
 	},
 
