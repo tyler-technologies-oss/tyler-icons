@@ -64,10 +64,13 @@ This project supports vscode DevContainers to help streamline and standardize th
 - Docker
 - Visual Studio Code
 - VSCode Remote Development extension pack.
+- GITHUB_PERSONAL_ACCESS_TOKEN environmental variable configured.
 
 See these [getting-started](https://code.visualstudio.com/docs/remote/containers#_installation) instructions for additional details.
 
 Once setup, VSCode should prompt with a notification that a DevContainer config file is recognized and suggest re-opening within a container.
+
+You can create a new token `GITHUB_PERSONAL_ACCESS_TOKEN` at https://github.com/settings/tokens with the `read:packages`. This needs to be added to your environment through your .bashrc, .zshrc or windows path environment settings. 
 
 ![devcontainer_notification](docs/img/devcontainer_notification.png)
 

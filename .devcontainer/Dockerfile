@@ -5,7 +5,7 @@ ARG VARIANT="16-bullseye"
 FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:0-${VARIANT}
 
 # Add vscode-tcw-snippets
-ARG GITHUB_TOKEN
-RUN export GITHUB_TOKEN=${GITHUB_TOKEN}
-RUN git clone https://${GITHUB_TOKEN}@github.com/tyler-technologies/vscode-tcw-snippets.git /home/node/.vscode-server/extensions/vscode-tcw-snippets
+ARG GITHUB_PERSONAL_ACCESS_TOKEN
+RUN export GITHUB_PERSONAL_ACCESS_TOKEN=${GITHUB_PERSONAL_ACCESS_TOKEN}
+RUN git clone https://${GITHUB_PERSONAL_ACCESS_TOKEN}@github.com/tyler-technologies/vscode-tcw-snippets.git /home/node/.vscode-server/extensions/vscode-tcw-snippets
 RUN sudo chown -R node /home/node/
