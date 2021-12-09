@@ -71,15 +71,7 @@ Once setup, VSCode should prompt with a notification that a DevContainer config 
 
 ![devcontainer_notification](docs/img/devcontainer_notification.png)
 
-To manually re-open the project within a dev container, simply open the VSCode Command Palette (`F1`) and select **Remote-Containers: Reopen Folder in Container**.
-
-For more information on starting a development environment within a container see [Developing inside a Container](https://code.visualstudio.com/docs/remote/containers)
-
-#### DevContainers Performance Notes
-
-When opening this project in a DevContainer on a Windows or Mac operating system, you may experience poor disk performance due to their use of bind mounts. See the following article for additional information and tips on how you might [improve disk performance](https://code.visualstudio.com/remote/advancedcontainers/improve-performance).
-
-#### Open in container
+#### Manually open current project in container
 1. open project folder in vscode
 1. open in container
 1. wait for devcontainer to build (~5 minutes)
@@ -87,6 +79,12 @@ When opening this project in a DevContainer on a Windows or Mac operating system
 1. To build the npm package, run the following: `npm run build`
 
 ![Alt text](/docs/gifs/open_in_container.gif "open project in container")
+
+For more information on starting a development environment within a container see [Developing inside a Container](https://code.visualstudio.com/docs/remote/containers)
+
+#### DevContainers Performance Notes
+
+When opening this project in a DevContainer on a Windows or Mac operating system, you may experience poor disk performance due to their use of bind mounts. See the following article for additional information and tips on how you might [improve disk performance](https://code.visualstudio.com/remote/advancedcontainers/improve-performance).
 
 In situations where you're unable to make use of the WSL2 filesystem (Windows), or where you're using macOS, you'll experience the best performance by making use of the **Remote-Containers: Clone Repository in Container Volume** command within VSCode. See this [article](https://code.visualstudio.com/remote/advancedcontainers/improve-performance#_use-clone-repository-in-container-volume) for more information.
 
