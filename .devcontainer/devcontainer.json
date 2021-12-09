@@ -37,7 +37,7 @@
 		"stylelint.vscode-stylelint",
 		"christian-kohler.npm-intellisense",
 		"mrmlnc.vscode-scss",
-		// todo: https://github.com/tyler-technologies/vscode-tcw-snippets
+		// vscode-tcw-snippets added in the dockerfile https://github.com/tyler-technologies/vscode-tcw-snippets
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
