@@ -79,7 +79,27 @@ For more information on starting a development environment within a container se
 
 When opening this project in a DevContainer on a Windows or Mac operating system, you may experience poor disk performance due to their use of bind mounts. See the following article for additional information and tips on how you might [improve disk performance](https://code.visualstudio.com/remote/advancedcontainers/improve-performance).
 
+#### Open in container
+1. open project folder in vscode
+1. open in container
+1. wait for devcontainer to build (~5 minutes)
+1. Serve the demo site to test the icons: `npm run start`
+1. To build the npm package, run the following: `npm run build`
+
+![Alt text](/docs/gifs/open_in_container.gif "open project in container")
+
 In situations where you're unable to make use of the WSL2 filesystem (Windows), or where you're using macOS, you'll experience the best performance by making use of the **Remote-Containers: Clone Repository in Container Volume** command within VSCode. See this [article](https://code.visualstudio.com/remote/advancedcontainers/improve-performance#_use-clone-repository-in-container-volume) for more information.
+
+#### Clone in containers
+1. open vscode
+1. clone repository in container
+1. wait for devcontainer to build (~5 minutes)
+1. Serve the demo site to test the icons: `npm run start`
+1. To build the npm package, run the following: `npm run build`
+
+![Alt text](/docs/gifs/clone_in_containers.gif "clone repository in container")
+
+> note: if you make any package changes and want them to persist you may need to rebuild the container
 
 ### Build and Validate
 
