@@ -1,3 +1,15 @@
+# v1.10.0 (Mon Feb 28 2022)
+
+#### 🚀 Enhancement
+
+- feat: add new town_hall_citizen and town_hall_citizen_connection icons [#47](https://github.com/tyler-technologies/tyler-icons/pull/47) ([@DRiFTy17](https://github.com/DRiFTy17))
+
+#### Authors: 1
+
+- Kieran Nichols ([@DRiFTy17](https://github.com/DRiFTy17))
+
+---
+
 # v1.9.1 (Wed Dec 08 2021)
 
 #### 🐛 Bug Fix
