@@ -1,17 +1,19 @@
 {
   "name": "@tylertech/tyler-icons",
   "repository": "tyler-technologies/tyler-icons",
-  "version": "1.10.0",
+  "version": "1.11.0-canary.0",
   "description": "The tree-shakable Tyler SVG icon library.",
   "sideEffects": false,
   "scripts": {
-    "build": "npm-run-all clean optimize:svg svg-to-ts compile:icons generate:metadata copy:package:assets clean:build",
+    "build": "npm-run-all clean optimize:svg svg-to-ts compile:icons rename:build-files compile:icons:cjs generate:metadata copy:package:assets clean:build",
     "svg-to-ts": "npm-run-all --parallel svg-to-ts:custom svg-to-ts:extended svg-to-ts:standard",
     "svg-to-ts:custom": "svg-to-ts --config .custom-svg-to-tsrc",
     "svg-to-ts:extended": "svg-to-ts --config .extended-svg-to-tsrc",
     "svg-to-ts:standard": "svg-to-ts --config .standard-svg-to-tsrc",
     "optimize:svg": "svgo -q -f ./svg/ -o dist/svg/ -r --enable removeDimensions --disable removeTitle",
     "compile:icons": "tsc --project tsconfig-build.json",
+    "compile:icons:cjs": "tsc --project tsconfig-build-cjs.json",
+    "rename:build-files": "node ./scripts/rename-build-files.js",
     "clean": "npm-run-all --parallel clean:tyler-icons clean:svg clean:build",
     "clean:svg": "rimraf dist/svg/",
     "clean:tyler-icons": "rimraf dist/@tylertech/tyler-icons/",
@@ -41,8 +43,9 @@
   "author": "Kieran Nichols <kieran.nichols@tylertech.com>",
   "license": "ISC",
   "devDependencies": {
-    "@auto-canary/npm": "^10.33.0--canary.2115.25151.0",
     "@auto-it/conventional-commits": "^10.32.3",
+    "@auto-it/npm": "^10.33.0",
+    "@tylertech/build-tools": "^1.3.0",
     "@tylertech/tyler-components-web": "^1.4.0",
     "@webcomponents/webcomponentsjs": "^2.5.0",
     "auto": "^10.32.3",
@@ -53,7 +56,22 @@
     "npm-run-all": "^4.1.5",
     "rimraf": "^3.0.2",
     "svg-to-ts": "^6.0.0",
+    "typescript": "~4.6.2",
     "webpack": "^5.4.0",
     "webpack-cli": "^4.2.0"
+  },
+  "exports": {
+    "./custom": {
+      "import": "./custom/index.js",
+      "require": "./custom/index.cjs.js"
+    },
+    "./extended": {
+      "import": "./extended/index.js",
+      "require": "./extended/index.cjs.js"
+    },
+    "./standard": {
+      "import": "./standard/index.js",
+      "require": "./standard/index.cjs.js"
+    }
   }
 }

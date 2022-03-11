@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "removeComments": true,
+    "declaration": false,
+    "noEmitOnError": false,
+    "noImplicitAny": true,
+    "allowJs": true,
+    "rootDir": ".build",
+    "outDir": "dist/@tylertech/tyler-icons/"
+  },
+  "include": [
+    ".build/**/*"
+  ]
+}
