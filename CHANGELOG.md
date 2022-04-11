@@ -1,3 +1,15 @@
+# v1.12.0 (Mon Apr 11 2022)
+
+#### 🚀 Enhancement
+
+- add Tyler and Forge logos [#51](https://github.com/tyler-technologies/tyler-icons/pull/51) ([@DRiFTy17](https://github.com/DRiFTy17))
+
+#### Authors: 1
+
+- Kieran Nichols ([@DRiFTy17](https://github.com/DRiFTy17))
+
+---
+
 # v1.11.0 (Mon Apr 11 2022)
 
 #### 🚀 Enhancement
