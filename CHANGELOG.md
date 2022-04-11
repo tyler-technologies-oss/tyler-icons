@@ -1,3 +1,15 @@
+# v1.11.0 (Mon Apr 11 2022)
+
+#### 🚀 Enhancement
+
+- feat(extended): added new `file_rotate_*` icons [#50](https://github.com/tyler-technologies/tyler-icons/pull/50) ([@DRiFTy17](https://github.com/DRiFTy17))
+
+#### Authors: 1
+
+- Kieran Nichols ([@DRiFTy17](https://github.com/DRiFTy17))
+
+---
+
 # v1.10.0 (Mon Feb 28 2022)
 
 #### 🚀 Enhancement
