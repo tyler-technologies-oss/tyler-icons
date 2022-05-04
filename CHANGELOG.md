@@ -1,3 +1,15 @@
+# v1.13.0 (Wed May 04 2022)
+
+#### 🚀 Enhancement
+
+- added and optimized the redact icon [#52](https://github.com/tyler-technologies/tyler-icons/pull/52) ([@nickonometry](https://github.com/nickonometry))
+
+#### Authors: 1
+
+- Nick Andrews ([@nickonometry](https://github.com/nickonometry))
+
+---
+
 # v1.12.0 (Mon Apr 11 2022)
 
 #### 🚀 Enhancement
