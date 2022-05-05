@@ -1,10 +1,14 @@
 {
   "name": "@tylertech/tyler-icons",
-  "repository": "tyler-technologies/tyler-icons",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tyler-technologies/tyler-icons.git"
+  },
   "version": "1.13.0",
   "description": "The tree-shakable Tyler SVG icon library.",
   "sideEffects": false,
   "scripts": {
+    "prepare": "husky install",
     "build": "npm-run-all clean optimize:svg svg-to-ts compile:icons generate:metadata copy:package:assets clean:build",
     "svg-to-ts": "npm-run-all --parallel svg-to-ts:custom svg-to-ts:extended svg-to-ts:standard",
     "svg-to-ts:custom": "svg-to-ts --config .custom-svg-to-tsrc",
@@ -38,18 +42,22 @@
     "extended",
     "standard"
   ],
-  "author": "Kieran Nichols <kieran.nichols@tylertech.com>",
-  "license": "ISC",
+  "author": "Tyler Technologies, Inc.",
+  "license": "Apache-2.0",
   "devDependencies": {
-    "@auto-canary/npm": "^10.33.0--canary.2115.25151.0",
-    "@auto-it/conventional-commits": "^10.32.3",
+    "@auto-it/conventional-commits": "^10.36.5",
+    "@auto-it/npm": "^10.36.5",
+    "@commitlint/cli": "^16.2.3",
+    "@commitlint/config-conventional": "^16.2.1",
     "@tylertech/tyler-components-web": "^1.4.0",
     "@webcomponents/webcomponentsjs": "^2.5.0",
-    "auto": "^10.32.3",
+    "auto": "^10.36.5",
+    "commitlint": "^16.2.3",
     "awesome-typescript-loader": "^5.2.1",
     "browser-sync": "^2.26.13",
     "cpx": "^1.5.0",
     "http-server": "^0.12.3",
+    "husky": "^7.0.4",
     "npm-run-all": "^4.1.5",
     "rimraf": "^3.0.2",
     "svg-to-ts": "^6.0.0",
