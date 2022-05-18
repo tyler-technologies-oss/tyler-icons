@@ -4,13 +4,17 @@
     "module": "es2015",
     "moduleResolution": "node",
     "lib": ["dom", "es2015"],
+    "declaration": false,
+    "removeComments": true,
     "noImplicitAny": true,
+    "noEmitOnError": false,
     "strictNullChecks": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noImplicitThis": false,
     "resolveJsonModule": true,
+    "allowJs": true,
     "baseUrl": ".",
     "paths": {
       "@tylertech/tyler-icons/*": ["./dist/@tylertech/tyler-icons/*"]
