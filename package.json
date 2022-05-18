@@ -1,39 +1,12 @@
 {
   "name": "@tylertech/tyler-icons",
+  "description": "The tree-shakable Tyler SVG icon library.",
+  "version": "1.13.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/tyler-technologies/tyler-icons.git"
   },
-  "version": "1.13.0",
-  "description": "The tree-shakable Tyler SVG icon library.",
   "sideEffects": false,
-  "scripts": {
-    "prepare": "husky install",
-    "build": "npm-run-all clean optimize:svg svg-to-ts compile:icons generate:metadata copy:package:assets clean:build",
-    "svg-to-ts": "npm-run-all --parallel svg-to-ts:custom svg-to-ts:extended svg-to-ts:standard",
-    "svg-to-ts:custom": "svg-to-ts --config .custom-svg-to-tsrc",
-    "svg-to-ts:extended": "svg-to-ts --config .extended-svg-to-tsrc",
-    "svg-to-ts:standard": "svg-to-ts --config .standard-svg-to-tsrc",
-    "optimize:svg": "svgo -q -f ./svg/ -o dist/svg/ -r --enable removeDimensions --disable removeTitle",
-    "compile:icons": "tsc --project tsconfig-build.json",
-    "clean": "npm-run-all --parallel clean:tyler-icons clean:svg clean:build",
-    "clean:svg": "rimraf dist/svg/",
-    "clean:tyler-icons": "rimraf dist/@tylertech/tyler-icons/",
-    "clean:build": "rimraf .build",
-    "serve": "browser-sync start --server --files \"demo/**/*.html,demo/**/*.css,demo/**/**.ts,demo/**/*.js\" --ignore \"demo/webpack.config.js\" --start-path /demo",
-    "start": "npm run build && npm-run-all --parallel webpack:demo:watch serve",
-    "webpack:demo": "webpack --config ./demo/webpack.config.js",
-    "webpack:demo:watch": "npm run webpack:demo -- --watch",
-    "copy:package:assets": "npm-run-all copy:package:typings copy:package:metadata copy:package:package.json copy:package:readme",
-    "copy:package:typings": "cpx \".build/**/*.d.ts\" dist/@tylertech/tyler-icons",
-    "copy:package:metadata": "cpx dist/tyler-icons-metadata-svg.json dist/@tylertech/tyler-icons",
-    "copy:package:package.json": "cpx package.json dist/@tylertech/tyler-icons",
-    "copy:package:readme": "cpx README.md dist/@tylertech/tyler-icons",
-    "changelog": "auto changelog",
-    "generate:metadata": "node ./scripts/generate-icon-metadata.js",
-    "release": "auto shipit",
-    "postversion": "cd dist/@tylertech/tyler-icons && npm version $npm_package_version --no-git-tag-version --no-commit-hooks --ignore-scripts"
-  },
   "keywords": [
     "tyler",
     "icons",
@@ -44,11 +17,58 @@
   ],
   "author": "Tyler Technologies, Inc.",
   "license": "Apache-2.0",
+  "exports": {
+    "./standard": {
+      "import": "./standard/index.js",
+      "require": "./standard/index.cjs.js"
+    },
+    "./extended": {
+      "import": "./extended/index.js",
+      "require": "./extended/index.cjs.js"
+    },
+    "./custom": {
+      "import": "./custom/index.js",
+      "require": "./custom/index.cjs.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "build": "npm-run-all clean optimize:svg svg-to-ts compile:icons:esm rename:build-files compile:icons:cjs generate:metadata copy:package:assets clean:build",
+    "svg-to-ts": "npm-run-all --parallel svg-to-ts:custom svg-to-ts:extended svg-to-ts:standard",
+    "svg-to-ts:custom": "svg-to-ts --config .custom-svg-to-tsrc",
+    "svg-to-ts:extended": "svg-to-ts --config .extended-svg-to-tsrc",
+    "svg-to-ts:standard": "svg-to-ts --config .standard-svg-to-tsrc",
+    "optimize:svg": "svgo -q -f ./svg/ -o dist/svg/ -r --enable removeDimensions --disable removeTitle",
+    "compile:icons:esm": "tsc --project tsconfig-build-esm.json",
+    "compile:icons:cjs": "tsc --project tsconfig-build-cjs.json",
+    "rename:build-files": "node ./scripts/rename-build-files.js",
+    "clean": "npm-run-all --parallel clean:tyler-icons clean:svg clean:build",
+    "clean:svg": "rimraf dist/svg/",
+    "clean:tyler-icons": "rimraf dist/@tylertech/tyler-icons/",
+    "clean:build": "rimraf .build",
+    "serve": "browser-sync start --server --files \"demo/**/*.html,demo/**/*.css,demo/**/**.ts,demo/**/*.js\" --ignore \"demo/webpack.config.js\" --start-path /demo",
+    "start": "npm run build && npm-run-all --parallel webpack:demo:watch serve",
+    "webpack:demo": "webpack --config ./demo/webpack.config.js",
+    "webpack:demo:watch": "npm run webpack:demo -- --watch",
+    "copy:package:assets": "npm-run-all copy:package:typings copy:package:metadata copy:package:package.json clean:package.json copy:package:readme copy:package:license",
+    "copy:package:typings": "cpx \".build/**/*.d.ts\" dist/@tylertech/tyler-icons",
+    "copy:package:metadata": "cpx dist/tyler-icons-metadata-svg.json dist/@tylertech/tyler-icons",
+    "copy:package:package.json": "cpx package.json dist/@tylertech/tyler-icons",
+    "copy:package:readme": "cpx README.md dist/@tylertech/tyler-icons",
+    "copy:package:license": "cpx LICENSE dist/@tylertech/tyler-icons",
+    "clean:package.json": "node ./scripts/clean-dist-package.js",
+    "changelog": "auto changelog",
+    "generate:metadata": "node ./scripts/generate-icon-metadata.js",
+    "release": "auto shipit",
+    "postversion": "cd dist/@tylertech/tyler-icons && npm version $npm_package_version --no-git-tag-version --no-commit-hooks --ignore-scripts"
+  },
   "devDependencies": {
     "@auto-it/conventional-commits": "^10.36.5",
     "@auto-it/npm": "^10.36.5",
     "@commitlint/cli": "^16.2.3",
     "@commitlint/config-conventional": "^16.2.1",
+    "@tylertech/build-tools": "^1.3.0",
     "@tylertech/tyler-components-web": "^1.4.0",
     "@webcomponents/webcomponentsjs": "^2.5.0",
     "auto": "^10.36.5",
@@ -61,6 +81,7 @@
     "npm-run-all": "^4.1.5",
     "rimraf": "^3.0.2",
     "svg-to-ts": "^6.0.0",
+    "typescript": "~4.6.2",
     "webpack": "^5.4.0",
     "webpack-cli": "^4.2.0"
   }
