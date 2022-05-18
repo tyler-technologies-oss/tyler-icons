@@ -1,3 +1,39 @@
+# v1.13.0 (Wed May 04 2022)
+
+#### 🚀 Enhancement
+
+- added and optimized the redact icon [#52](https://github.com/tyler-technologies/tyler-icons/pull/52) ([@nickonometry](https://github.com/nickonometry))
+
+#### Authors: 1
+
+- Nick Andrews ([@nickonometry](https://github.com/nickonometry))
+
+---
+
+# v1.12.0 (Mon Apr 11 2022)
+
+#### 🚀 Enhancement
+
+- add Tyler and Forge logos [#51](https://github.com/tyler-technologies/tyler-icons/pull/51) ([@DRiFTy17](https://github.com/DRiFTy17))
+
+#### Authors: 1
+
+- Kieran Nichols ([@DRiFTy17](https://github.com/DRiFTy17))
+
+---
+
+# v1.11.0 (Mon Apr 11 2022)
+
+#### 🚀 Enhancement
+
+- feat(extended): added new `file_rotate_*` icons [#50](https://github.com/tyler-technologies/tyler-icons/pull/50) ([@DRiFTy17](https://github.com/DRiFTy17))
+
+#### Authors: 1
+
+- Kieran Nichols ([@DRiFTy17](https://github.com/DRiFTy17))
+
+---
+
 # v1.10.0 (Mon Feb 28 2022)
 
 #### 🚀 Enhancement
