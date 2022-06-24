@@ -3,10 +3,10 @@
 This library contains SVG icons converted to JavaScript modules (with TypeScript typings) to allow for distributing a tree-shakable
 icon library that can be imported into applications on a per-icon basis as needed.
 
-## TCW usage
+## Forge usage
 
 This package only contains SVG icons that are distributed as importable JavaScript constants. It's expected that you will use these
-icons with the TCW `<tcw-icon>` component to easily render them. This means you can define each component with the TCW icon registry
+icons with the Forge `<forge-icon>` component to easily render them. This means you can define each component with the Forge icon registry
 to easily choose the icons that your application needs, the rest will be ignored and tree shaken away!
 
 After installing the `@tylertech/tyler-icons` package into your project, you can then import and define the icons you want to use with
@@ -15,7 +15,7 @@ the registry.
 > **Important:** the icons are separated out by the following directories in the package:
 > * standard: The official Google Material icons.
 > * extended: The community-based Material icons.
-> * custom: Tyler-owned custom Material icons.
+> * custom: Tyler-owned custom icons.
 >
 > Be sure to import icons from the corresponding directory within the package. See the [Forge icon library](https://forge.tylertech.com/core-components/iconography/library) for help finding icons.
 
@@ -23,30 +23,35 @@ the registry.
 import { tylIconAccountCircle, tylIconFace } from '@tylertech/tyler-icons/standard';
 import { tylIconAccountDetails } from '@tylertech/tyler-icons/extended';
 import { tylIconActionLauncher } from '@tylertech/tyler-icons/custom';
-import { TylerIconRegistry } from '@tylertech/tyler-components-web';
+import { IconRegistry } from '@tylertech/forge';
 
-TylerIconRegistry.define([tylIconAccountCircle, tylIconFace, tylIconAccountDetails, tylIconActionLauncher]);
+IconRegistry.define([
+  tylIconAccountCircle,
+  tylIconFace,
+  tylIconAccountDetails,
+  tylIconActionLauncher
+]);
 ```
 
- Now you can use this icon name with the `<tcw-icon>` component:
+ Now you can use this icon name with the `<forge-icon>` component:
 
  ```html
- <tcw-icon name="face"></tcw-icon>
+ <forge-icon name="face"></forge-icon>
  ```
 
  You can also load icons dynamically (without registering them locally) by using the external CDN. Just set the `external` attribute to enable the component to make a request to the CDN to fetch the icon data dynamically (if not exists in the local registry):
 
  ```html
- <tcw-icon name="face" external external-type="standard"></tcw-icon>
+ <forge-icon name="face" external external-type="standard"></forge-icon>
  ```
  
  > Just be sure to specify the correct set name in the value of the `external-type` attribute. Valid values: "standard" (default), "extended", "custom".
  
  A property by the name of `externalUrlBuilder` exists on the component which can be set to a callback that will be executed when the component is creating the URL to fetch the icon from. This gives you control over hosting the icons yourself elsewhere from the public CDN if desired.
 
-## Non-TCW usage
+## Non-Forge usage
 
-If you aren't using TCW, you will need to use a different means for rendering the icons from this package. Each icon is exported with its
+If you aren't using Forge, you will need to use a different means for rendering the icons from this package. Each icon is exported with its
 name and the SVG structure as a `string`. You can then use that SVG content to convert to HTML manually.
 
 ## Missing an icon?
@@ -72,9 +77,4 @@ Icon metadata (JSON format) can also be generated from this repository:
 npm run generate:metadata
 ```
 
-
 > This is included in the CDN as well as the npm package.
-
-
-
-
