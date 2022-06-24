@@ -1,5 +1,4 @@
 const path = require('path');
-const TsConfigPathsPlugin = require('awesome-typescript-loader').TsConfigPathsPlugin;
 
 const ROOT = path.join(__dirname, '../');
 
@@ -8,10 +7,7 @@ module.exports = {
   entry: './demo/src/main.ts',
   devtool: 'source-map',
   resolve: {
-    extensions: ['.ts', '.js'],
-    plugins: [
-      new TsConfigPathsPlugin()
-    ]
+    extensions: ['.ts', '.js']
   },
   output: {
     path: path.join(ROOT, 'demo/dist'),
@@ -26,9 +22,9 @@ module.exports = {
         test: /\.ts$/,
         use: [
           {
-            loader: 'awesome-typescript-loader',
+            loader: 'ts-loader',
             options: {
-              configFileName: path.join(ROOT, 'tsconfig.json')
+              configFile: path.join(ROOT, 'tsconfig.json')
             }
           }
         ]

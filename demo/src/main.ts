@@ -1,6 +1,7 @@
 import * as standardIconsModule from '@tylertech/tyler-icons/standard';
 import * as extendedIconsModule from '@tylertech/tyler-icons/extended';
 import * as customIconsModule from '@tylertech/tyler-icons/custom';
+import { type IChipComponent, type IChipSetComponent, type IChipSelectEventData } from '@tylertech/forge';
 import { debounce } from '@tylertech/forge-core';
 
 const standardIcons = Object.values(standardIconsModule);
@@ -81,11 +82,11 @@ clearButton.addEventListener('click', () => {
 });
 
 // Listen for chip-set changes
-const chipSet = document.querySelector('#icon-set-options') as HTMLElement;
-chipSet.addEventListener('forge-chip-select', (evt: CustomEvent) => {
+const chipSet = document.querySelector('#icon-set-options') as IChipSetComponent;
+chipSet.addEventListener('forge-chip-select', (evt: CustomEvent<IChipSelectEventData>) => {
   selectedIconSet = evt.detail.value;
 
-  const chips = Array.from(chipSet.querySelectorAll('forge-chip')) as any[];
+  const chips = Array.from(chipSet.querySelectorAll('forge-chip')) as IChipComponent[];
   chips.filter(chip => chip.value !== selectedIconSet).forEach(chip => chip.selected = false);
 
   if (searchField.value.trim().length) {
