@@ -5,43 +5,39 @@
     <title>Tyler Icons</title>
     <link rel="shortcut icon" href="https://cdn.forge.tylertech.com/favicon.ico" sizes="16x16" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.forge.tylertech.com/v1/css/tyler-font.css">
-    <link rel="stylesheet" href="https://cdn.forge.tylertech.com/v1/css/tyler-icons-standard.css">
-    <link rel="stylesheet" href="../node_modules/@tylertech/tyler-components-web/dist/tcw-material-design.css"/>
+    <link rel="stylesheet" href="https://cdn.forge.tylertech.com/v1/libs/@tylertech/forge@v2/forge-core.css"/>
+    <link rel="stylesheet" href="https://cdn.forge.tylertech.com/v1/libs/@tylertech/forge@v2/forge.css"/>
     <link rel="stylesheet" href="./styles.css"/>
   </head>
-  <body class="tyl-typography">
-    <tcw-scaffold>
-      <tcw-omnibar slot="header" title-text="Tyler Icons">
-        <tcw-omnibar-search slot="center">
+  <body class="forge-typography">
+    <forge-scaffold>
+      <forge-app-bar slot="header" title-text="Tyler Icons">
+        <forge-icon slot="logo" name="tyler_talking_t_logo" external external-type="custom"></forge-icon>
+        <forge-app-bar-search slot="center">
           <input type="text" placeholder="Search..." />
-          <tcw-icon-button>
-            <button type="button" id="clear-button" class="tyler-icons">clear</button>
-          </tcw-icon-button>
-        </tcw-omnibar-search>
-      </tcw-omnibar>
-      <tcw-toolbar slot="body-header">
-        <tcw-chip-set type="choice" slot="start" id="icon-set-options">
-          <tcw-chip value="standard" selected>Standard</tcw-chip>
-          <tcw-chip value="extended">Extended</tcw-chip>
-          <tcw-chip value="custom">Custom</tcw-chip>
-        </tcw-chip-set>
-      </tcw-toolbar>
+          <forge-icon-button dense density-level="4" style="margin-right: 8px;">
+            <button type="button" id="clear-button">
+              <forge-icon name="clear" external></forge-icon>
+            </button>
+          </forge-icon-button>
+        </forge-app-bar-search>
+      </forge-app-bar>
+      <forge-toolbar slot="body-header">
+        <forge-chip-set type="choice" slot="start" id="icon-set-options">
+          <forge-chip value="standard" selected>Standard</forge-chip>
+          <forge-chip value="extended">Extended</forge-chip>
+          <forge-chip value="custom">Custom</forge-chip>
+        </forge-chip-set>
+      </forge-toolbar>
       <div slot="body" style="padding: 16px;">
-        <tcw-card style="width: 960px; --tyl-card-height: auto;">
-          <h2 slot="header" class="tyl-typography--title">Icons (<span id="icon-count">0</span>)</h2>
+        <forge-card style="width: 960px; --forge-card-height: auto;">
+          <h2 slot="header" class="forge-typography--title">Icons (<span id="icon-count">0</span>)</h2>
           <div class="icon-list"></div>
-        </tcw-card>
+        </forge-card>
       </div>
-    </tcw-scaffold>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.6.5/core.min.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/element-closest/browser"></script>
-    <script type="text/javascript" src="scripts/global-this.js"></script>
-    <script type="text/javascript" src="../node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"></script>
-    <script type="text/javascript" src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
-    <script type="text/javascript" src="../node_modules/@tylertech/tyler-components-web/dist/tyler-components-web-lib.min.js"></script>
+    </forge-scaffold>
+    
+    <script type="module" src="https://cdn.forge.tylertech.com/v1/libs/@tylertech/forge@v2/index.js"></script>
     <script src="./dist/demo.bundle.js"></script>
-    <script type="text/javascript">
-      TylerComponentsWeb.lib.defineComponents();
-    </script>
   </body>
 </html>

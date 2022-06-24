@@ -4,49 +4,29 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
   workflow_dispatch:
     
-concurrency: auto-release-${{ github.ref	}}
+concurrency: auto-release-${{ github.ref }}
 
 jobs:
-  wf-config:
-    name: Workflow Configuration
-    runs-on: ubuntu-latest
-    steps:
-      - name: Package Repo Selection
-        id: pkg-repo
-        run: |
-          if [ "${GITHUB_REF}" == 'refs/heads/main' ]; then
-            echo "::set-output name=repo-name::FORGE"
-          else
-            echo "::set-output name=repo-name::SCRATCH"
-          fi
-    outputs:
-      pkg-repo-name: ${{ steps.pkg-repo.outputs.repo-name }}
-          
   release:
     name: Build and Release
-    needs: wf-config
-    uses: tyler-technologies/forge-automation-shared/.github/workflows/wf-build-release.yml@v0.1.0
+    uses: tyler-technologies/forge-automation-shared/.github/workflows/wf-build-release.yml@v0.17.0
     with:
       PRODUCTION_RELEASE: ${{ github.ref == 'refs/heads/main' && contains(fromJson('["push", "workflow_dispatch"]'), github.event_name) }}
-      PACKAGE_CDN_ASSETS: ${{ github.ref == 'refs/heads/main' && contains(fromJson('["push", "workflow_dispatch"]'), github.event_name) }}
-      NODE_VERSION: "14"
+      PACKAGE_ASSETS_ENABLED: ${{ github.ref == 'refs/heads/main' && contains(fromJson('["push", "workflow_dispatch"]'), github.event_name) }}
+      PACKAGE_ASSETS_ARCHIVE_PATH: "dist/deployment-assets.tar.gz"
     secrets:
-      GITHUB_APP_ID: ${{ secrets.TCP_AUTOMATION_APP_ID }}
-      GITHUB_APP_KEY: ${{ secrets.TCP_AUTOMATION_APP_KEY }}
-      ARTIFACTORY_TOKEN: ${{ secrets[format('{0}_ARTIFACTORY_TOKEN', needs.wf-config.outputs.pkg-repo-name)] }}
-      ARTIFACTORY_USERNAME: ${{ secrets[format('{0}_ARTIFACTORY_USERNAME', needs.wf-config.outputs.pkg-repo-name)] }}
-      ARTIFACTORY_REGISTRY: ${{ secrets[format('{0}_ARTIFACTORY_NPM_REGISTRY', needs.wf-config.outputs.pkg-repo-name)] }}
+      GITHUB_APP_ID: ${{ secrets.FORGE_AUTOBOT_ID }}
+      GITHUB_APP_KEY: ${{ secrets.FORGE_AUTOBOT_SECRET }}
+      NPM_TOKEN: ${{ secrets.FORGE_NPM_TOKEN }}
+
   #TODO: https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions#jobsjob_idoutputs
   #      Once workflows are out of beta: https://docs.github.com/en/actions/learn-github-actions/reusing-workflows#limitations
   publish-cdn:
     name: Publish Assets to CDN
     needs: release
-    uses: tyler-technologies/forge-automation-shared/.github/workflows/wf-publish-cloudfront-assets.yml@v0.1.0
+    uses: tyler-technologies/forge-automation-shared/.github/workflows/wf-publish-cloudfront-assets.yml@v0.17.0
     if: ${{ github.ref == 'refs/heads/main' && contains(fromJson('["push", "workflow_dispatch"]'), github.event_name) }}
     with:
       AWS_IAM_ROLE: "***REMOVED***"
