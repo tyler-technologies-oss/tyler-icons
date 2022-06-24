@@ -1,3 +1,16 @@
+# v1.14.0 (Fri Jun 24 2022)
+
+#### 🚀 Enhancement
+
+- feat: remove scripts from dist package.json ([@DRiFTy17](https://github.com/DRiFTy17))
+- feat: oss prep [#53](https://github.com/tyler-technologies-oss/tyler-icons/pull/53) ([@DRiFTy17](https://github.com/DRiFTy17))
+
+#### Authors: 1
+
+- Kieran Nichols ([@DRiFTy17](https://github.com/DRiFTy17))
+
+---
+
 # v1.13.0 (Wed May 04 2022)
 
 #### 🚀 Enhancement
