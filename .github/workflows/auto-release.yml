@@ -29,8 +29,10 @@ jobs:
     uses: tyler-technologies-oss/forge-automation-shared/.github/workflows/wf-publish-cloudfront-assets.yml@v2.0.0
     if: ${{ github.ref == 'refs/heads/main' && contains(fromJson('["push", "workflow_dispatch"]'), github.event_name) }}
     with:
-      AWS_IAM_ROLE: ${{ secrets.AWS_IAM_ROLE }}
       AWS_REGION: "us-east-1"
+      MAX_CLOUDFRONT_INVALIDATIONS: 25
+    secrets:
+      AWS_IAM_ROLE: ${{ secrets.AWS_IAM_ROLE }}
       AWS_S3_BUCKET_NAME: ${{ secrets.AWS_S3_BUCKET }}
       AWS_CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION }}
-      MAX_CLOUDFRONT_INVALIDATIONS: 25
+
