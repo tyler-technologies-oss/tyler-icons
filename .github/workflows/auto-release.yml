@@ -11,7 +11,7 @@ concurrency: auto-release-${{ github.ref }}
 jobs:
   release:
     name: Build and Release
-    uses: tyler-technologies/forge-automation-shared/.github/workflows/wf-build-release.yml@v0.17.0
+    uses: tyler-technologies-oss/forge-automation-shared/.github/workflows/wf-build-release.yml@v1.0.0
     with:
       PRODUCTION_RELEASE: ${{ github.ref == 'refs/heads/main' && contains(fromJson('["push", "workflow_dispatch"]'), github.event_name) }}
       PACKAGE_ASSETS_ENABLED: ${{ github.ref == 'refs/heads/main' && contains(fromJson('["push", "workflow_dispatch"]'), github.event_name) }}
@@ -26,7 +26,7 @@ jobs:
   publish-cdn:
     name: Publish Assets to CDN
     needs: release
-    uses: tyler-technologies/forge-automation-shared/.github/workflows/wf-publish-cloudfront-assets.yml@v0.17.0
+    uses: tyler-technologies-oss/forge-automation-shared/.github/workflows/wf-publish-cloudfront-assets.yml@v1.0.0
     if: ${{ github.ref == 'refs/heads/main' && contains(fromJson('["push", "workflow_dispatch"]'), github.event_name) }}
     with:
       AWS_IAM_ROLE: "***REMOVED***"
