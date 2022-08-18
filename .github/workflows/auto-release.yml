@@ -26,11 +26,11 @@ jobs:
   publish-cdn:
     name: Publish Assets to CDN
     needs: release
-    uses: tyler-technologies-oss/forge-automation-shared/.github/workflows/wf-publish-cloudfront-assets.yml@v1.0.0
+    uses: tyler-technologies-oss/forge-automation-shared/.github/workflows/wf-publish-cloudfront-assets.yml@v2.0.0
     if: ${{ github.ref == 'refs/heads/main' && contains(fromJson('["push", "workflow_dispatch"]'), github.event_name) }}
     with:
-      AWS_IAM_ROLE: "***REMOVED***"
+      AWS_IAM_ROLE: ${{ secrets.AWS_IAM_ROLE }}
       AWS_REGION: "us-east-1"
-      AWS_S3_BUCKET_NAME: "***REMOVED***"
-      AWS_CLOUDFRONT_DISTRIBUTION_ID: "***REMOVED***"
+      AWS_S3_BUCKET_NAME: ${{ secrets.AWS_S3_BUCKET }}
+      AWS_CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION }}
       MAX_CLOUDFRONT_INVALIDATIONS: 25
