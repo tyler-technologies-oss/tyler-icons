@@ -1,3 +1,15 @@
+# v1.15.0 (Mon Nov 07 2022)
+
+#### 🚀 Enhancement
+
+- Add crisis icon [#54](https://github.com/tyler-technologies-oss/tyler-icons/pull/54) ([@nickonometry](https://github.com/nickonometry))
+
+#### Authors: 1
+
+- Nick Andrews ([@nickonometry](https://github.com/nickonometry))
+
+---
+
 # v1.14.0 (Fri Jun 24 2022)
 
 #### 🚀 Enhancement
