@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="https://cdn.forge.tylertech.com/v1/libs/@tylertech/forge@v2/forge-core.css"/>
     <link rel="stylesheet" href="https://cdn.forge.tylertech.com/v1/libs/@tylertech/forge@v2/forge.css"/>
     <link rel="stylesheet" href="./styles.css"/>
+    <link rel="stylesheet" href="../dist/fonts/standard/tyler-icons-standard.css"/>
+    <link rel="stylesheet" href="../dist/fonts/extended/tyler-icons-extended.css"/>
+    <link rel="stylesheet" href="../dist/fonts/custom/tyler-icons-custom.css"/>
   </head>
   <body class="forge-typography">
     <forge-scaffold>
@@ -29,6 +32,12 @@
           <forge-chip value="custom">Custom</forge-chip>
         </forge-chip-set>
       </forge-toolbar>
+      <div slot="header">
+        <!-- <i class="tyler-icons">code</i> -->
+        <i class="tyler-icons-ext">ab_testing</i>
+        <!-- <i class="tyler-icons-ext">account_child_circle</i>
+        <i class="tyler-icons-custom">action_launcher</i> -->
+      </div>
       <div slot="body" style="padding: 16px;">
         <forge-card style="width: 960px; --forge-card-height: auto;">
           <h2 slot="header" class="forge-typography--title">Icons (<span id="icon-count">0</span>)</h2>

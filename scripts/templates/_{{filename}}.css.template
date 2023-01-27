@@ -1,0 +1,44 @@
+@font-face {
+  font-family: '{{fontname}}';
+  src: url('{{cssPath}}{{fontname}}.woff2?t={{timestamp}}') format('woff2'),
+       url('{{cssPath}}{{fontname}}.ttf?t={{timestamp}}') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+       url('{{cssPath}}{{fontname}}.woff?t={{timestamp}}') format('woff'), 
+       url('{{cssPath}}{{fontname}}.svg?t={{timestamp}}#{{fontname}}') format('svg'); /* iOS 4.1- */
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+.{{prefix}} {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: '{{fontname}}' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-display: block;
+  text-transform: none;
+  line-height: 1;
+  
+  /* Enable Ligatures ================ */
+  letter-spacing: 0;
+  -webkit-font-feature-settings: "liga";
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  font-feature-settings: "liga";
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Custom =========== */
+  font-size: {{fontSize}};
+  display: inline-block;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  text-rendering: optimizeLegibility;
+}
+
+{{cssString}}

@@ -5,6 +5,10 @@ body {
   background-color: var(--mdc-theme-background);
 }
 
+* {
+  box-sizing: border-box;
+}
+
 div[slot=body] {
   display: flex;
   width: 100%;

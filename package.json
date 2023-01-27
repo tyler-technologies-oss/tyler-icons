@@ -11,7 +11,7 @@
   "sideEffects": false,
   "scripts": {
     "prepare": "husky install",
-    "build": "npm-run-all clean optimize:svg svg-to-ts compile:icons generate:metadata copy:package:assets clean:build prepare:package",
+    "build": "npm-run-all clean optimize:svg svg-to-ts compile:icons generate:metadata generate:fonts copy:package:assets clean:build prepare:package",
     "ci:package": "./build-scripts/package-cdn-assets.sh",
     "svg-to-ts": "npm-run-all --parallel svg-to-ts:custom svg-to-ts:extended svg-to-ts:standard",
     "svg-to-ts:custom": "svg-to-ts --config .custom-svg-to-tsrc",
@@ -35,6 +35,7 @@
     "prepare:package": "node ./build-scripts/prepare-package.js",
     "changelog": "auto changelog",
     "generate:metadata": "node ./scripts/generate-icon-metadata.js",
+    "generate:fonts": "node ./scripts/generate-fonts.js",
     "release": "auto shipit",
     "postversion": "cd dist/@tylertech/tyler-icons && npm version $npm_package_version --no-git-tag-version --no-commit-hooks --ignore-scripts"
   },
@@ -42,6 +43,7 @@
     "tyler",
     "icons",
     "svg",
+    "font",
     "custom",
     "extended",
     "standard"
@@ -58,11 +60,13 @@
     "browser-sync": "^2.26.13",
     "commitlint": "^16.2.3",
     "cpx": "^1.5.0",
+    "fonteditor-core": "^2.1.10",
     "http-server": "^0.12.3",
     "husky": "^7.0.4",
     "npm-run-all": "^4.1.5",
     "rimraf": "^3.0.2",
     "svg-to-ts": "^6.0.0",
+    "svgtofont": "^3.19.1",
     "ts-loader": "^9.3.1",
     "webpack": "^5.4.0",
     "webpack-cli": "^4.2.0"

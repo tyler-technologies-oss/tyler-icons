@@ -17,10 +17,11 @@ let selectedIconSet = 'standard';
 
 declare type ITylerIcon = standardIconsModule.ITylerIconStandard | extendedIconsModule.ITylerIconExtended | customIconsModule.ITylerIconCustom
 
-function buildIconCard(icon: ITylerIcon): HTMLDivElement {
+function buildIconCard(icon: ITylerIcon, cssClass: string): HTMLDivElement {
   const iconCard = document.createElement('div');
   iconCard.classList.add('icon-card');
   iconCard.appendChild(buildSVGElement(icon));
+  iconCard.appendChild(buildFontElement(icon, cssClass));
   iconCard.appendChild(document.createTextNode(icon.name));
   return iconCard;
 }
@@ -31,31 +32,40 @@ function buildSVGElement(icon: ITylerIcon): SVGElement {
   return div.querySelector('svg') || document.createElementNS('http://www.w3.org/2000/svg', 'path');
 }
 
+function buildFontElement(icon: ITylerIcon, cssClass: string): HTMLElement {
+  const i = document.createElement('i');
+  i.classList.add(cssClass);
+  i.style.color = 'red';
+  // i.classList.add(`${cssClass}-${icon.name}`);
+  i.textContent = icon.name;
+  return i;
+}
+
 function buildIcons(): void {
   switch (selectedIconSet) {
     case 'standard':
-      buildIconList(standardIcons);
+      buildIconList(standardIcons, 'tyler-icons');
       break;
     case 'extended':
-      buildIconList(extendedIcons);
+      buildIconList(extendedIcons, 'tyler-icons-ext');
       break;
     case 'custom':
-      buildIconList(customIcons);
+      buildIconList(customIcons, 'tyler-icons-custom');
       break;
   }
 }
 
-function buildIconList(iconSet: any[]): void {
+function buildIconList(iconSet: any[], cssClass: string): void {
   const iconList = document.querySelector('.icon-list') as HTMLElement;
   iconList.innerHTML = '';
-  iconSet.forEach((icon: ITylerIcon) => iconList.appendChild(buildIconCard(icon)));
+  iconSet.forEach((icon: ITylerIcon) => iconList.appendChild(buildIconCard(icon, cssClass)));
   countLabel.textContent = `${iconSet.length}`;
 }
 
 function buildFilteredIconList(): void {
   const iconSet = getSelectedIconSet();
   const newIconSet = iconSet.filter((icon: ITylerIcon) => (icon.name as string).includes(searchField.value));
-  buildIconList(newIconSet);
+  buildIconList(newIconSet, 'tyler-icons');
 }
 
 function getSelectedIconSet(): any[] {
