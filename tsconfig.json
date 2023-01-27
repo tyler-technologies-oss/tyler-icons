@@ -11,9 +11,6 @@
     "noImplicitReturns": true,
     "noImplicitThis": false,
     "resolveJsonModule": true,
-    "baseUrl": ".",
-    "paths": {
-      "@tylertech/tyler-icons/*": ["./dist/@tylertech/tyler-icons/*"]
-    }
+    "baseUrl": "."
   },
 }
