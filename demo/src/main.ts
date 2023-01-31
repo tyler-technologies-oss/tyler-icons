@@ -29,7 +29,7 @@ function buildIconCard(icon: ITylerIcon): HTMLDivElement {
 function buildSVGElement(icon: ITylerIcon): HTMLElement {
   const forgeIcon = document.createElement('forge-icon');
   forgeIcon.src = icon.data;
-  return forgeIcon || document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  return forgeIcon;
 }
 
 function buildIcons(): void {
