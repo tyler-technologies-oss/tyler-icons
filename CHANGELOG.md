@@ -1,3 +1,16 @@
+# v1.16.1 (Tue Jan 31 2023)
+
+#### 🐛 Bug Fix
+
+- Feat/add baseball cap icon [#57](https://github.com/tyler-technologies-oss/tyler-icons/pull/57) ([@nickonometry](https://github.com/nickonometry) [@DRiFTy17](https://github.com/DRiFTy17))
+
+#### Authors: 2
+
+- Kieran Nichols ([@DRiFTy17](https://github.com/DRiFTy17))
+- Nick Andrews ([@nickonometry](https://github.com/nickonometry))
+
+---
+
 # v1.16.0 (Tue Jan 31 2023)
 
 #### 🚀 Enhancement
