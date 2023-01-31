@@ -1,3 +1,16 @@
+# v1.16.0 (Tue Jan 31 2023)
+
+#### 🚀 Enhancement
+
+- chore: cleaned up the SVG and added the baseball cap icon [#56](https://github.com/tyler-technologies-oss/tyler-icons/pull/56) ([@nickonometry](https://github.com/nickonometry) [@DRiFTy17](https://github.com/DRiFTy17))
+
+#### Authors: 2
+
+- Kieran Nichols ([@DRiFTy17](https://github.com/DRiFTy17))
+- Nick Andrews ([@nickonometry](https://github.com/nickonometry))
+
+---
+
 # v1.15.0 (Mon Nov 07 2022)
 
 #### 🚀 Enhancement
