@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -21,6 +21,11 @@
             </button>
           </forge-icon-button>
         </forge-app-bar-search>
+        <forge-icon-button slot="end">
+          <button type="button" aria-label="Enable dark mode" id="theme-toggle-button">
+            <forge-icon name="brightness_3" external external-type="extended" id="theme-toggle-icon"></forge-icon>
+          </button>
+        </forge-icon-button>
       </forge-app-bar>
       <forge-toolbar slot="body-header">
         <forge-chip-set type="choice" slot="start" id="icon-set-options">
@@ -39,5 +44,56 @@
     
     <script type="module" src="https://cdn.forge.tylertech.com/v1/libs/@tylertech/forge@v2/index.js"></script>
     <script src="./dist/demo.bundle.js"></script>
+    <script defer>
+      let htmlElement = document.documentElement;
+      let headElement = document.head;
+      let themeToggleButton = document.querySelector('#theme-toggle-button');
+      let themeToggleIcon = document.querySelector('#theme-toggle-icon');
+
+      let setDarkMode = () => {
+        htmlElement.setAttribute('data-theme', 'dark');
+        themeToggleButton.ariaLabel="Enable light mode";
+        themeToggleIcon.setAttribute('name', 'wb_sunny');
+        themeToggleIcon.setAttribute('external', 'true');
+        themeToggleIcon.setAttribute('external-type', 'standard');
+        appendDarkThemeStylesheet();
+      }
+
+      let setLightMode = () => {
+        htmlElement.setAttribute('data-theme', 'light');
+        themeToggleButton.ariaLabel="Enable dark mode";
+        themeToggleIcon.setAttribute('external', 'true');
+        themeToggleIcon.setAttribute('name', 'brightness_3');
+        themeToggleIcon.setAttribute('external-type', 'extended');
+        removeDarkThemeStylesheet();
+      }
+
+      let appendDarkThemeStylesheet = () => {
+        let darkStyles = document.createElement('link');
+        darkStyles.id = "dark-mode-css";
+        darkStyles.rel = "stylesheet";
+        darkStyles.href = "https://cdn.jsdelivr.net/npm/@tylertech/forge@2.0.0/dist/forge-dark.css";
+        headElement.append(darkStyles);
+      }
+
+      let removeDarkThemeStylesheet = () => {
+        let darkStyles = document.querySelector('#dark-mode-css');
+        if (darkStyles) {
+          darkStyles.remove();
+        }
+      }
+
+      themeToggleButton.addEventListener('click', () => {
+        let theme = htmlElement.getAttribute("data-theme");
+        console.log(theme)
+        if (theme === 'light') {
+          setDarkMode();
+        } else {
+          setLightMode();
+        }
+      })
+
+      setLightMode();
+    </script>
   </body>
 </html>
