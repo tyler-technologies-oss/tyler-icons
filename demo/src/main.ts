@@ -1,8 +1,9 @@
-import * as standardIconsModule from '@tylertech/tyler-icons/standard';
-import * as extendedIconsModule from '@tylertech/tyler-icons/extended';
-import * as customIconsModule from '@tylertech/tyler-icons/custom';
 import { type IChipComponent, type IChipSetComponent, type IChipSelectEventData } from '@tylertech/forge';
 import { debounce } from '@tylertech/forge-core';
+
+import * as standardIconsModule from '../../dist/@tylertech/tyler-icons/standard';
+import * as extendedIconsModule from '../../dist/@tylertech/tyler-icons/extended';
+import * as customIconsModule from '../../dist/@tylertech/tyler-icons/custom';
 
 const standardIcons = Object.values(standardIconsModule);
 const extendedIcons = Object.values(extendedIconsModule);
