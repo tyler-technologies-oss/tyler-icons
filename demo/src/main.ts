@@ -26,10 +26,10 @@ function buildIconCard(icon: ITylerIcon): HTMLDivElement {
   return iconCard;
 }
 
-function buildSVGElement(icon: ITylerIcon): SVGElement {
-  const div = document.createElement('div');
-  div.innerHTML = icon.data;
-  return div.querySelector('svg') || document.createElementNS('http://www.w3.org/2000/svg', 'path');
+function buildSVGElement(icon: ITylerIcon): HTMLElement {
+  const forgeIcon = document.createElement('forge-icon');
+  forgeIcon.src = icon.data;
+  return forgeIcon;
 }
 
 function buildIcons(): void {
