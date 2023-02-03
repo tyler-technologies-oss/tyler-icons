@@ -1,3 +1,15 @@
+# v1.17.0 (Fri Feb 03 2023)
+
+#### 🚀 Enhancement
+
+- chore: added the new tyler coach icon [#58](https://github.com/tyler-technologies-oss/tyler-icons/pull/58) ([@nickonometry](https://github.com/nickonometry))
+
+#### Authors: 1
+
+- Nick Andrews ([@nickonometry](https://github.com/nickonometry))
+
+---
+
 # v1.16.1 (Tue Jan 31 2023)
 
 #### 🐛 Bug Fix
