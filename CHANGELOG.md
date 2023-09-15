@@ -1,3 +1,15 @@
+# v1.17.1 (Fri Sep 15 2023)
+
+#### 🐛 Bug Fix
+
+- fix: join decision_tree icon paths [#60](https://github.com/tyler-technologies-oss/tyler-icons/pull/60) ([@samrichardsontylertech](https://github.com/samrichardsontylertech))
+
+#### Authors: 1
+
+- Sam Richardson ([@samrichardsontylertech](https://github.com/samrichardsontylertech))
+
+---
+
 # v1.17.0 (Fri Feb 03 2023)
 
 #### 🚀 Enhancement
