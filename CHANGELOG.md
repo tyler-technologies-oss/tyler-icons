@@ -1,3 +1,15 @@
+# v1.18.0 (Tue Jan 30 2024)
+
+#### 🚀 Enhancement
+
+- feat: added a new custom icon for the Tyler Budget team [#61](https://github.com/tyler-technologies-oss/tyler-icons/pull/61) ([@nickonometry](https://github.com/nickonometry))
+
+#### Authors: 1
+
+- Nick Andrews ([@nickonometry](https://github.com/nickonometry))
+
+---
+
 # v1.17.1 (Fri Sep 15 2023)
 
 #### 🐛 Bug Fix
