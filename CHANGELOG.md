@@ -1,3 +1,15 @@
+# v1.18.1 (Tue Feb 06 2024)
+
+#### 🐛 Bug Fix
+
+- feat: add new database filter custom icon [#62](https://github.com/tyler-technologies-oss/tyler-icons/pull/62) ([@samrichardsontylertech](https://github.com/samrichardsontylertech))
+
+#### Authors: 1
+
+- Sam Richardson ([@samrichardsontylertech](https://github.com/samrichardsontylertech))
+
+---
+
 # v1.18.0 (Tue Jan 30 2024)
 
 #### 🚀 Enhancement
