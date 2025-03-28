@@ -47,8 +47,8 @@
     "standard"
   ],
   "devDependencies": {
-    "@auto-it/conventional-commits": "^10.36.5",
-    "@auto-it/npm": "^10.36.5",
+    "@auto-it/conventional-commits": "^11.3.0",
+    "@auto-it/npm": "^11.3.0",
     "@commitlint/cli": "^16.2.3",
     "@commitlint/config-conventional": "^16.2.1",
     "@tylertech/forge": "^2.0.0",
