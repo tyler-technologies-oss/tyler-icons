@@ -26,7 +26,7 @@ jobs:
   publish-cdn:
     name: Publish Assets to CDN
     needs: release
-    uses: tyler-technologies-oss/forge-automation-shared/.github/workflows/wf-publish-cloudfront-assets.yml@v2.0.0
+    uses: tyler-technologies-oss/forge-automation-shared/.github/workflows/wf-publish-cloudfront-assets.yml@v2.10.3
     if: ${{ github.ref == 'refs/heads/main' && contains(fromJson('["push", "workflow_dispatch"]'), github.event_name) }}
     with:
       AWS_REGION: "us-east-1"
