@@ -1,3 +1,20 @@
+# v1.19.0 (Fri Mar 28 2025)
+
+#### 🚀 Enhancement
+
+- chore(icon): style tweaks [#66](https://github.com/tyler-technologies-oss/tyler-icons/pull/66) ([@nickonometry](https://github.com/nickonometry))
+
+#### 🐛 Bug Fix
+
+- chore(icon): updated workflow version [#65](https://github.com/tyler-technologies-oss/tyler-icons/pull/65) ([@nickonometry](https://github.com/nickonometry))
+- chore(icon): added new chart_combo icon to the custom library [#64](https://github.com/tyler-technologies-oss/tyler-icons/pull/64) ([@nickonometry](https://github.com/nickonometry))
+
+#### Authors: 1
+
+- Nick Andrews ([@nickonometry](https://github.com/nickonometry))
+
+---
+
 # v1.18.1 (Tue Feb 06 2024)
 
 #### 🐛 Bug Fix
