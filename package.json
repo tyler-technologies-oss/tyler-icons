@@ -47,14 +47,14 @@
     "standard"
   ],
   "devDependencies": {
-    "@auto-it/conventional-commits": "^10.36.5",
-    "@auto-it/npm": "^10.36.5",
+    "@auto-it/conventional-commits": "^11.3.0",
+    "@auto-it/npm": "^11.3.0",
     "@commitlint/cli": "^16.2.3",
     "@commitlint/config-conventional": "^16.2.1",
     "@tylertech/forge": "^2.0.0",
     "@tylertech/forge-build-tools": "^2.0.0",
     "@tylertech/forge-core": "^2.0.0",
-    "auto": "^10.36.5",
+    "auto": "^11.3.0",
     "browser-sync": "^2.26.13",
     "commitlint": "^16.2.3",
     "cpx": "^1.5.0",
