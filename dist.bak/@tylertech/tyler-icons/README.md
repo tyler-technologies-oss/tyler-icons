@@ -12,8 +12,17 @@ to easily choose the icons that your application needs, the rest will be ignored
 After installing the `@tylertech/tyler-icons` package into your project, you can then import and define the icons you want to use with
 the registry.
 
+> **Important:** the icons are separated out by the following directories in the package:
+> * standard: The official Google Material icons.
+> * extended: The community-based Material icons.
+> * custom: Tyler-owned custom icons.
+>
+> Be sure to import icons from the corresponding directory within the package. See the [Forge icon library](https://forge.tylertech.com/core-components/iconography/library) for help finding icons.
+
 ```ts
-import { tylIconAccountCircle, tylIconAccountDetails, tylIconActionLauncher } from '@tylertech/tyler-icons';
+import { tylIconAccountCircle, tylIconFace } from '@tylertech/tyler-icons/standard';
+import { tylIconAccountDetails } from '@tylertech/tyler-icons/extended';
+import { tylIconActionLauncher } from '@tylertech/tyler-icons/custom';
 import { IconRegistry } from '@tylertech/forge';
 
 IconRegistry.define([
@@ -33,8 +42,10 @@ IconRegistry.define([
  You can also load icons dynamically (without registering them locally) by using the external CDN. Just set the `external` attribute to enable the component to make a request to the CDN to fetch the icon data dynamically (if not exists in the local registry):
 
  ```html
- <forge-icon name="face" external external-type="base"></forge-icon>
+ <forge-icon name="face" external external-type="standard"></forge-icon>
  ```
+ 
+ > Just be sure to specify the correct set name in the value of the `external-type` attribute. Valid values: "standard" (default), "extended", "custom".
  
  A property by the name of `externalUrlBuilder` exists on the component which can be set to a callback that will be executed when the component is creating the URL to fetch the icon from. This gives you control over hosting the icons yourself elsewhere from the public CDN if desired.
 
@@ -55,7 +66,7 @@ To get started developing in this repository, follow these steps:
 
 1. Install dependencies: `npm install`
 2. Update any `.svg` in the `svg` directory (if applicable).
-3. Serve the demo site to test the icons: `npm start`
+3. Serve the demo site to test the icons: `npm run serve`
 4. To build the npm package, run the following: `npm run build`
 
 ### Generating icon metadata

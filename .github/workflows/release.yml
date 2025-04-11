@@ -1,0 +1,36 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - next
+  workflow_dispatch:
+    
+concurrency: release-${{ github.ref }}
+
+jobs:
+  release:
+    name: Release
+    uses: tyler-technologies-oss/forge-automation-shared/.github/workflows/wf-build-release.yml@v2.10.3
+    with:
+      PRODUCTION_RELEASE: ${{ github.ref == 'refs/heads/next' && contains(fromJson('["push", "workflow_dispatch"]'), github.event_name) }}
+      PACKAGE_ASSETS_ENABLED: ${{ github.ref == 'refs/heads/next' && contains(fromJson('["push", "workflow_dispatch"]'), github.event_name) }}
+      PACKAGE_ASSETS_ARCHIVE_PATH: "dist/deployment-assets.tar.gz"
+    secrets:
+      GITHUB_APP_ID: ${{ secrets.FORGE_AUTOBOT_ID }}
+      GITHUB_APP_KEY: ${{ secrets.FORGE_AUTOBOT_SECRET }}
+      NPM_TOKEN: ${{ secrets.FORGE_NPM_TOKEN }}
+
+  publish-cdn:
+    name: Publish Assets to CDN
+    needs: release
+    uses: tyler-technologies-oss/forge-automation-shared/.github/workflows/wf-publish-cloudfront-assets.yml@v2.10.3
+    if: ${{ github.ref == 'refs/heads/next' && contains(fromJson('["push", "workflow_dispatch"]'), github.event_name) }}
+    with:
+      AWS_REGION: "us-east-1"
+      MAX_CLOUDFRONT_INVALIDATIONS: 25
+    secrets:
+      AWS_IAM_ROLE: ${{ secrets.AWS_IAM_ROLE }}
+      AWS_S3_BUCKET_NAME: ${{ secrets.AWS_S3_BUCKET }}
+      AWS_CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION }}
+

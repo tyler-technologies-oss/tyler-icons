@@ -1,6 +1,7 @@
 {
   "name": "@tylertech/tyler-icons",
-  "version": "1.19.0",
+  "version": "2.0.0",
+  "type": "module",
   "description": "The tree-shakable Tyler SVG icon library.",
   "author": "Tyler Technologies, Inc.",
   "license": "Apache-2.0",
@@ -9,62 +10,44 @@
     "url": "https://github.com/tyler-technologies-oss/tyler-icons.git"
   },
   "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./tyler-icons.mjs",
+      "types": "./tyler-icons.d.ts"
+    },
+    "./tyler-icons-metadata.json": "./dist/tyler-icons-metadata.json"
+  },
+  "files": [
+    "tyler-icons.mjs",
+    "tyler-icons.d.ts",
+    "tyler-icons-metadata.json"
+  ],
   "scripts": {
-    "prepare": "husky install",
-    "build": "npm-run-all clean optimize:svg svg-to-ts compile:icons generate:metadata copy:package:assets clean:build prepare:package",
+    "prepare": "husky",
+    "start": "npm run build && vite",
+    "build": "npm-run-all svg-to-ts compile:icons generate:metadata",
     "ci:package": "./build-scripts/package-cdn-assets.sh",
-    "svg-to-ts": "npm-run-all --parallel svg-to-ts:custom svg-to-ts:extended svg-to-ts:standard",
-    "svg-to-ts:custom": "svg-to-ts --config .custom-svg-to-tsrc",
-    "svg-to-ts:extended": "svg-to-ts --config .extended-svg-to-tsrc",
-    "svg-to-ts:standard": "svg-to-ts --config .standard-svg-to-tsrc",
-    "optimize:svg": "svgo -q -f ./svg/ -o dist/svg/ -r --enable removeDimensions --disable removeTitle",
-    "compile:icons": "tsc --project tsconfig-build.json",
-    "clean": "npm-run-all --parallel clean:tyler-icons clean:svg clean:build",
-    "clean:svg": "rimraf dist/svg/",
-    "clean:tyler-icons": "rimraf dist/@tylertech/tyler-icons/",
-    "clean:build": "rimraf .build",
-    "serve": "browser-sync start --server --files \"demo/**/*.html,demo/**/*.css,demo/**/**.ts,demo/**/*.js\" --ignore \"demo/webpack.config.js\" --start-path /demo",
-    "start": "npm run build && npm-run-all --parallel webpack:demo:watch serve",
-    "webpack:demo": "webpack --config ./demo/webpack.config.js",
-    "webpack:demo:watch": "npm run webpack:demo -- --watch",
-    "copy:package:assets": "npm-run-all copy:package:typings copy:package:metadata copy:package:package.json copy:package:readme",
-    "copy:package:typings": "cpx \".build/**/*.d.ts\" dist/@tylertech/tyler-icons",
-    "copy:package:metadata": "cpx dist/tyler-icons-metadata-svg.json dist/@tylertech/tyler-icons",
-    "copy:package:package.json": "cpx package.json dist/@tylertech/tyler-icons",
-    "copy:package:readme": "cpx README.md dist/@tylertech/tyler-icons",
-    "prepare:package": "node ./build-scripts/prepare-package.js",
-    "changelog": "auto changelog",
-    "generate:metadata": "node ./scripts/generate-icon-metadata.js",
-    "release": "auto shipit",
-    "postversion": "cd dist/@tylertech/tyler-icons && npm version $npm_package_version --no-git-tag-version --no-commit-hooks --ignore-scripts"
+    "svg-to-ts": "svg-to-ts-constants",
+    "compile:icons": "tsc --project tsconfig.build.json && renamer --force --find .js --replace .mjs ./tyler-icons.js",
+    "generate:metadata": "node ./scripts/generate-icon-metadata.js"
   },
   "keywords": [
     "tyler",
     "icons",
-    "svg",
-    "custom",
-    "extended",
-    "standard"
+    "svg"
   ],
   "devDependencies": {
-    "@auto-it/conventional-commits": "^11.3.0",
-    "@auto-it/npm": "^11.3.0",
-    "@commitlint/cli": "^16.2.3",
-    "@commitlint/config-conventional": "^16.2.1",
-    "@tylertech/forge": "^2.0.0",
-    "@tylertech/forge-build-tools": "^2.0.0",
-    "@tylertech/forge-core": "^2.0.0",
-    "auto": "^11.3.0",
-    "browser-sync": "^2.26.13",
-    "commitlint": "^16.2.3",
+    "@changesets/cli": "^2.28.1",
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "@tylertech/forge": "^3.8.1",
+    "commitlint": "^19.8.0",
     "cpx": "^1.5.0",
-    "http-server": "^0.12.3",
-    "husky": "^7.0.4",
+    "husky": "^9.1.7",
     "npm-run-all": "^4.1.5",
-    "rimraf": "^3.0.2",
-    "svg-to-ts": "^6.0.0",
-    "ts-loader": "^9.3.1",
-    "webpack": "^5.4.0",
-    "webpack-cli": "^4.2.0"
+    "renamer": "^5.0.2",
+    "rimraf": "^6.0.1",
+    "svg-to-ts": "^12.0.0",
+    "vite": "^6.2.6"
   }
 }

@@ -1,98 +1,42 @@
-<html lang="en" data-theme="light">
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Tyler Icons</title>
     <link rel="shortcut icon" href="https://cdn.forge.tylertech.com/favicon.ico" sizes="16x16" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.forge.tylertech.com/v1/css/tyler-font.css">
-    <link rel="stylesheet" href="https://cdn.forge.tylertech.com/v1/libs/@tylertech/forge@v2/forge-core.css"/>
-    <link rel="stylesheet" href="https://cdn.forge.tylertech.com/v1/libs/@tylertech/forge@v2/forge.css"/>
-    <link rel="stylesheet" href="./styles.css"/>
+    <link rel="stylesheet" href="./styles.scss">
+    <script type="module" src="./theme.ts"></script>
   </head>
-  <body class="forge-typography">
+  <body>
     <forge-scaffold>
       <forge-app-bar slot="header" title-text="Tyler Icons">
-        <forge-icon slot="logo" name="tyler_talking_t_logo" external external-type="custom"></forge-icon>
+        <forge-icon slot="logo" name="tyler_talking_t_logo"></forge-icon>
+
+        <!-- Search -->
         <forge-app-bar-search slot="center">
           <input type="text" placeholder="Search..." />
-          <forge-icon-button dense density-level="4" style="margin-right: 8px;">
-            <button type="button" id="clear-button">
-              <forge-icon name="clear" external></forge-icon>
-            </button>
+          <forge-icon-button slot="end" id="clear-button" density="small" aria-label="Clear search" style="margin-right: 8px;">
+            <forge-icon name="clear"></forge-icon>
           </forge-icon-button>
         </forge-app-bar-search>
-        <forge-icon-button slot="end">
-          <button type="button" aria-label="Enable dark mode" id="theme-toggle-button">
-            <forge-icon name="brightness_3" external external-type="extended" id="theme-toggle-icon"></forge-icon>
-          </button>
+
+        <!-- Theme toggle -->
+        <forge-icon-button slot="end" aria-label="Toggle theme" id="theme-toggle-button">
+          <forge-icon name="brightness_3" id="theme-toggle-icon"></forge-icon>
         </forge-icon-button>
       </forge-app-bar>
-      <forge-toolbar slot="body-header">
-        <forge-chip-set type="choice" slot="start" id="icon-set-options">
-          <forge-chip value="standard" selected>Standard</forge-chip>
-          <forge-chip value="extended">Extended</forge-chip>
-          <forge-chip value="custom">Custom</forge-chip>
-        </forge-chip-set>
-      </forge-toolbar>
-      <div slot="body" style="padding: 16px;">
-        <forge-card style="width: 960px; --forge-card-height: auto;">
-          <h2 slot="header" class="forge-typography--title">Icons (<span id="icon-count">0</span>)</h2>
+
+      <!-- Content -->
+      <main slot="body" style="padding: 16px;">
+        <forge-card style="width: 960px;">
+          <h2 class="forge-typography--heading4">Icons (<span id="icon-count">0</span>)</h2>
           <div class="icon-list"></div>
         </forge-card>
-      </div>
+      </main>
     </forge-scaffold>
     
-    <script type="module" src="https://cdn.forge.tylertech.com/v1/libs/@tylertech/forge@v2/index.js"></script>
-    <script src="./dist/demo.bundle.js"></script>
-    <script defer>
-      let htmlElement = document.documentElement;
-      let headElement = document.head;
-      let themeToggleButton = document.querySelector('#theme-toggle-button');
-      let themeToggleIcon = document.querySelector('#theme-toggle-icon');
-
-      let setDarkMode = () => {
-        htmlElement.setAttribute('data-theme', 'dark');
-        themeToggleButton.ariaLabel="Enable light mode";
-        themeToggleIcon.setAttribute('name', 'wb_sunny');
-        themeToggleIcon.setAttribute('external', 'true');
-        themeToggleIcon.setAttribute('external-type', 'standard');
-        appendDarkThemeStylesheet();
-      }
-
-      let setLightMode = () => {
-        htmlElement.setAttribute('data-theme', 'light');
-        themeToggleButton.ariaLabel="Enable dark mode";
-        themeToggleIcon.setAttribute('external', 'true');
-        themeToggleIcon.setAttribute('name', 'brightness_3');
-        themeToggleIcon.setAttribute('external-type', 'extended');
-        removeDarkThemeStylesheet();
-      }
-
-      let appendDarkThemeStylesheet = () => {
-        let darkStyles = document.createElement('link');
-        darkStyles.id = "dark-mode-css";
-        darkStyles.rel = "stylesheet";
-        darkStyles.href = "https://cdn.jsdelivr.net/npm/@tylertech/forge@2.0.0/dist/forge-dark.css";
-        headElement.append(darkStyles);
-      }
-
-      let removeDarkThemeStylesheet = () => {
-        let darkStyles = document.querySelector('#dark-mode-css');
-        if (darkStyles) {
-          darkStyles.remove();
-        }
-      }
-
-      themeToggleButton.addEventListener('click', () => {
-        let theme = htmlElement.getAttribute("data-theme");
-        if (theme === 'light') {
-          setDarkMode();
-        } else {
-          setLightMode();
-        }
-      })
-
-      setLightMode();
-    </script>
+    <script type="module" src="./main.ts"></script>
   </body>
 </html>

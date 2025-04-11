@@ -1,0 +1,42 @@
+@use '@tylertech/forge/dist/forge-core.css';
+@use '@tylertech/forge/dist/forge.css';
+@use '@tylertech/forge/sass/theme/theme-dark' as forge-theme-dark;
+
+[data-theme='dark'] {
+  @include forge-theme-dark.theme-properties;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+main[slot=body] forge-card {
+  margin: 0 auto;
+}
+
+.icon-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr) );
+  gap: var(--forge-spacing-medium);
+}
+
+.icon-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 150px;
+  border-radius: 4px;
+  border: 1px solid var(--forge-theme-outline);
+  word-break: break-all;
+  font-size: 12px;
+}
+
+.icon-card forge-icon {
+  font-size: 2rem;
+}
+
+h2 {
+  margin-top: 0;
+}

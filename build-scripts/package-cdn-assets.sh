@@ -6,15 +6,18 @@ die() {
   exit "${_ret}"
 }
 
-script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)" || die "Couldn't determine the script's running directory, which probably matters, bailing out" 2
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)" || die "Couldn't determine the script's running directory, bailing out" 2
 
 # Change directories to the root of the project before processing
 cd "${script_dir}/.." || die "Couldn't change to root project directory, bailing out." 2
 
-mkdir -p dist/cdn/v1/icons
-ln -s "$(pwd)/dist/svg" "$(pwd)/dist/cdn/v1/icons/svg"
+# Create the output directory and link the SVG icon files
+mkdir -p dist/cdn/v2/icons
+ln -s "$(pwd)/dist/svg" "$(pwd)/dist/cdn/v2/icons/svg"
 
-mkdir -p dist/cdn/v1/metadata/icons
-ln -s "$(pwd)/dist/tyler-icons-metadata-svg.json" "$(pwd)/dist/cdn/v1/metadata/icons/tyler-icons-metadata-svg.v1.json"
+# Create the metadata directory and link the metadata file
+mkdir -p dist/cdn/v2/metadata/icons
+ln -s "$(pwd)/tyler-icons-metadata.json" "$(pwd)/dist/cdn/v2/metadata/icons/tyler-icons-metadata.json"
 
+# Compress the assets into a tarball (this is the directory structure that will be pushed to the bucket)
 cd "$(pwd)/dist" && tar -czvhf deployment-assets.tar.gz -C cdn .

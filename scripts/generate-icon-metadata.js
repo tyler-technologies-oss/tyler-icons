@@ -1,69 +1,16 @@
-const path = require('path');
-const fs = require('fs');
+import { resolve, join } from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+import * as allIcons from '../tyler-icons.mjs';
 
-const ROOT_DIR = path.resolve(__dirname, '../');
-const SVG_DIR = path.join(ROOT_DIR, 'dist/svg');
-const OUTPUT_DIR = path.join(ROOT_DIR, 'dist');
-const OUTPUT_FILENAME = 'tyler-icons-metadata-svg';
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
+const ROOT_DIR = resolve(__dirname, '../');
+const OUTPUT_DIR = ROOT_DIR;
+const OUTPUT_FILENAME = 'tyler-icons-metadata.json';
 
-async function main() {
-  try {
-    const metadata = createMetadata(SVG_DIR);
-    if (!fs.existsSync(OUTPUT_DIR)) {
-      fs.mkdirSync(OUTPUT_DIR);
-    }
-    writeFile(metadata, OUTPUT_FILENAME);
-    writeFile(metadata, `${OUTPUT_FILENAME}-pretty`, true);
-  } catch (e) {
-    console.error('An error occurred while generating the metadata', e);
-  }
+try {
+  const icons = Object.values(allIcons);
+  fs.writeFileSync(join(OUTPUT_DIR, `${OUTPUT_FILENAME}`), JSON.stringify(icons, undefined, 2));
+} catch (e) {
+  console.error('An error occurred while generating the metadata', e);
 }
-
-function writeFile(obj, filename, pretty = false) {
-  fs.writeFileSync(path.join(OUTPUT_DIR, `${filename}.json`), pretty ? JSON.stringify(obj, null, 2) : JSON.stringify(obj));
-}
-
-function createMetadata(svgDir) {
-  const customIcons = iconsFromDir(path.join(svgDir, 'custom'));
-  const extendedIcons = iconsFromDir(path.join(svgDir, 'extended'));
-  const standardIcons = iconsFromDir(path.join(svgDir, 'standard'));
-
-  return [
-    createMetadataFromIcons('Custom', customIcons),
-    createMetadataFromIcons('Standard', standardIcons),
-    createMetadataFromIcons('Extended', extendedIcons)
-  ];
-}
-
-function createMetadataFromIcons(name, icons) {
-  return {
-    identifier: `tyler-icons-${name.toLowerCase()}`,
-    name,
-    count: icons.length,
-    icons
-  };
-}
-
-function iconsFromDir(startPath, icons = []) {
-  if (!fs.existsSync(startPath)) {
-    throw new Error(`Invalid start path: ${startPath}`);
-  }
-
-  const files = fs.readdirSync(startPath);
-
-  for(let i = 0; i< files.length; i++) {
-    const filename = path.join(startPath, files[i]);
-    const stat = fs.lstatSync(filename);
-    if (stat.isDirectory()){
-      return [...icons, ...fromDir(filename, filter, callback)];
-    } else if (/\.svg$/.test(filename)) {
-      const name = path.parse(filename).name;
-      const data = fs.readFileSync(filename, 'utf-8');
-      icons.push({ name, data });
-    }
-  }
-
-  return icons;
-}
-
-main();
