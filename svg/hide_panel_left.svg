@@ -1,17 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
-  <defs>
-    <style>
-      .cls-1 {
-        fill: none;
-      }
-    </style>
-  </defs>
-  <title>hide_panel_left</title>
-  <path class="cls-1" d="M0,0H24V24H0Z" />
-  <path class="cls-1" d="M0,0H24V24H0Z" />
-  <path class="cls-1" d="M0,0H24V24H0Z" />
-  <rect class="cls-1" x="3" y="4.98" width="3.11" height="14.04" />
-  <path class="cls-1" d="M8.11,19H21V5H8.11ZM16.35,8.28l-2.58,2.59h5.67v2H13.77l2.58,2.59-1.41,1.41-5-5,5-5Z" />
-  <polygon points="14.94 16.87 16.35 15.46 13.77 12.87 19.44 12.87 19.44 10.87 13.77 10.87 16.35 8.28 14.94 6.87 9.94 11.87 14.94 16.87" />
-  <path d="M21,3H3A2,2,0,0,0,1,5V19a2,2,0,0,0,2,2H21a2,2,0,0,0,2-2V5A2,2,0,0,0,21,3ZM3,5H6.11V19H3ZM21,19H8.11V5H21Z" />
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.cls-1{fill:none}</style></defs><title>hide_panel_left</title><path d="M0 0h24v24H0Z" class="cls-1"/><path d="M0 0h24v24H0Z" class="cls-1"/><path d="M0 0h24v24H0Z" class="cls-1"/><path d="M3 4.98h3.11v14.04H3zM8.11 19H21V5H8.11Zm8.24-10.72-2.58 2.59h5.67v2h-5.67l2.58 2.59-1.41 1.41-5-5 5-5Z" class="cls-1"/><path d="m14.94 16.87 1.41-1.41-2.58-2.59h5.67v-2h-5.67l2.58-2.59-1.41-1.41-5 5z"/><path d="M21 3H3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2M3 5h3.11v14H3Zm18 14H8.11V5H21Z"/></svg>

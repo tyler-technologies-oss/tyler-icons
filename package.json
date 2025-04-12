@@ -25,7 +25,8 @@
   "scripts": {
     "prepare": "husky",
     "start": "npm run build && vite",
-    "build": "npm-run-all svg-to-ts compile:icons generate:metadata",
+    "build": "npm-run-all optimize:svg svg-to-ts compile:icons generate:metadata",
+    "optimize:svg": "svgo -q --input ./svg",
     "ci:package": "./build-scripts/package-cdn-assets.sh",
     "svg-to-ts": "svg-to-ts-constants",
     "compile:icons": "tsc --project tsconfig.build.json && renamer --force --find .js --replace .mjs ./tyler-icons.js",
