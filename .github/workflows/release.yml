@@ -44,16 +44,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.FORGE_NPM_TOKEN }}
 
-      - name: Check File Changes
-        id: changes
-        uses: dorny/paths-filter@v3
-        with:
-          filters: |
-            svg:
-              - 'svg/**'
-
       - name: Package CDN Assets
-        if: steps.changes.outputs.svg == 'true' && steps.changesets.outputs.published == 'true'
+        if: steps.changesets.outputs.published == 'true'
         id: package-assets
         run: npm run package-assets
 
