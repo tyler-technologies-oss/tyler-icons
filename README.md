@@ -33,7 +33,7 @@ IconRegistry.define([
  You can also load icons dynamically (without registering them locally) by using the external CDN. Just set the `external` attribute to enable the component to make a request to the CDN to fetch the icon data dynamically (if not exists in the local registry):
 
  ```html
- <forge-icon name="face" external external-type="base"></forge-icon>
+ <forge-icon name="face" external external-type="all"></forge-icon>
  ```
  
  A property by the name of `externalUrlBuilder` exists on the component which can be set to a callback that will be executed when the component is creating the URL to fetch the icon from. This gives you control over hosting the icons yourself elsewhere from the public CDN if desired.
