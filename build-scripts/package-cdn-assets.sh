@@ -13,11 +13,11 @@ cd "${script_dir}/.." || die "Couldn't change to root project directory, bailing
 
 # Create the output directory and link the svg directory
 mkdir -p dist/cdn/v1/icons/svg/all
-ln -s "$(pwd)/svg" "$(pwd)/dist/cdn/v1/icons/svg/all"
+ln -s "$(pwd)/svg/"* "$(pwd)/dist/cdn/v1/icons/svg/all"
 
 # Create the metadata directory and link the metadata file
 mkdir -p dist/cdn/v1/metadata/icons
-ln -s "$(pwd)/tyler-icons-metadata.json" "$(pwd)/dist/cdn/v1/metadata/icons/tyler-icons-metadata.json"
+ln -s "$(pwd)/tyler-icons-metadata.json" "$(pwd)/dist/cdn/v1/metadata/icons/tyler-icons-metadata-all.json"
 
 # Compress the assets into a tarball (this is the directory structure that will be pushed to the bucket)
 cd "$(pwd)/dist" && tar -czvhf deployment-assets.tar.gz -C cdn .
