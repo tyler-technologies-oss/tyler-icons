@@ -1,0 +1,23 @@
+{
+  "srcFiles": ["./svg/**/*.svg"],
+  "outputDirectory": "./dist",
+  "fileName": "tyler-icons",
+  "compileSources": true,
+  "interfaceName": "ITylerIcon",
+  "typeName": "TylerIconsNames",
+  "prefix": "tylIcon",
+  "exportCompleteIconSet": false,
+  "svgoConfig": {
+    "plugins": [
+      "removeDimensions",
+      {
+        "name": "preset-default",
+        "params": {
+          "overrides": {
+            "removeTitle": false
+          }
+        }
+      }
+    ]
+  }
+}

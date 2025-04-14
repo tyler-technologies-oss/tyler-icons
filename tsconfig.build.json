@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "removeComments": true,
+    "declaration": true,
+    "noEmitOnError": true,
+    "noImplicitAny": true,
+    "rootDir": "./dist",
+    "outDir": "."
+  },
+  "files": [
+    "./dist/tyler-icons.ts"
+  ]
+}

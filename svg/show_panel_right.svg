@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .cls-1{fill:none}
+    </style>
+  </defs>
+  <title>show_panel_right</title>
+  <path d="M0 0h24v24H0Z" class="cls-1"/>
+  <path d="M0 0h24v24H0Z" class="cls-1"/>
+  <path d="M17.89 4.98H21v14.04h-3.11zm-2 .02H3v14h12.89ZM11 15.46l-1.44 1.41-5-5 5-5L11 8.28l-2.61 2.59h5.67v2H8.39Z" class="cls-1"/>
+  <path d="M14.06 10.87H8.39l2.58-2.59-1.41-1.41-5 5 5 5 1.41-1.41-2.58-2.59h5.67z"/>
+  <path d="M21 3H3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2M3 5h12.89v14H3Zm18 14h-3.11V5H21Z"/>
+</svg>

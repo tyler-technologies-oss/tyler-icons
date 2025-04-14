@@ -1,9 +1,0 @@
-plugins:
-  - - npm
-    - setRcToken: false
-      publishFolder: "dist/@tylertech/tyler-icons"
-  - conventional-commits
-  - released
-author: GitHub Actions <41898282+github-actions[bot]@users.noreply.github.com>
-canary:
-  target: comment
