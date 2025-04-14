@@ -12,8 +12,8 @@ script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)" || die "Couldn't dete
 cd "${script_dir}/.." || die "Couldn't change to root project directory, bailing out." 2
 
 # Create the output directory and link the svg directory
-mkdir -p dist/cdn/v1/tyler-icons
-ln -s "$(pwd)/svg" "$(pwd)/dist/cdn/v1/tyler-icons"
+mkdir -p dist/cdn/v1/icons/svg/all
+ln -s "$(pwd)/svg" "$(pwd)/dist/cdn/v1/icons/svg/all"
 
 # Create the metadata directory and link the metadata file
 mkdir -p dist/cdn/v1/metadata/icons
