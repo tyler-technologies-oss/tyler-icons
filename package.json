@@ -33,9 +33,8 @@
     "copy:package:package.json": "cpx package.json dist/@tylertech/tyler-icons",
     "copy:package:readme": "cpx README.md dist/@tylertech/tyler-icons",
     "prepare:package": "node ./build-scripts/prepare-package.js",
-    "changelog": "auto changelog",
     "generate:metadata": "node ./scripts/generate-icon-metadata.js",
-    "release": "auto shipit",
+    "release": "auto shipit --base-branch version-1",
     "postversion": "cd dist/@tylertech/tyler-icons && npm version $npm_package_version --no-git-tag-version --no-commit-hooks --ignore-scripts"
   },
   "keywords": [

@@ -3,7 +3,7 @@ name: Build and Release
 on:
   push:
     branches:
-      - main
+      - version-1
   workflow_dispatch:
     
 concurrency: auto-release-${{ github.ref }}
