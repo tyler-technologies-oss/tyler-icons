@@ -1,1 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>chart_combo</title><path d="M22 24H2V6h2v16h2v-9h4v9h2V9h4v13h2v-5h4z"/><path d="M15.874 5.922 19.514 0 21 .808l-4.49 7.311-5.59-3.03L7.288 11 6 10.139l4.293-7.271z"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <title>chart_combo</title>
+  <path d="M22 24H2V6h2v16h2v-9h4v9h2V9h4v13h2v-5h4z"/>
+  <path d="M15.874 5.922 19.514 0 21 .808l-4.49 7.311-5.59-3.03L7.288 11 6 10.139l4.293-7.271z"/>
+</svg>
