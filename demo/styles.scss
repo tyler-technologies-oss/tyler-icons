@@ -10,33 +10,58 @@
   box-sizing: border-box;
 }
 
-main[slot=body] forge-card {
+:not(:defined) {
+  visibility: hidden;
+}
+
+#scroll-container {
+  padding: var(--forge-spacing-large);
+}
+
+forge-card.content {
   margin: 0 auto;
+  max-width: 960px;
+
+  .content-header {
+    display: flex;
+    align-items: center;
+    gap: var(--forge-spacing-small);
+    margin-bottom: var(--forge-spacing-large);
+
+    h2 {
+      margin: 0;
+    }
+  }
 }
 
 .icon-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr) );
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: var(--forge-spacing-medium);
 }
 
 .icon-card {
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
-  gap: 8px;
-  min-height: 150px;
-  border-radius: 4px;
-  border: 1px solid var(--forge-theme-outline);
-  word-break: break-all;
-  font-size: 12px;
-}
+  gap: var(--forge-spacing-xsmall);
+  border-radius: var(--forge-shape-medium);
+  border: var(--forge-border-thin) solid var(--forge-theme-outline);
+  overflow: hidden;
+  padding: var(--forge-spacing-medium);
 
-.icon-card forge-icon {
-  font-size: 2rem;
-}
+  &:hover {
+    transition: box-shadow var(--forge-animation-duration-short4) var(--forge-animation-easing-standard);
+    border-color: var(--forge-theme-outline-low);
+    box-shadow: var(--forge-elevation-4);
+  }
 
-h2 {
-  margin-top: 0;
+  forge-icon {
+    font-size: 2rem;
+  }
+
+  .icon-name {
+    margin-inline: var(--forge-spacing-xsmall);
+    word-break: break-all;
+  }
 }

@@ -1,4 +1,5 @@
-import { defineAppBarComponent, defineAppBarSearchComponent, defineCardComponent, defineIconComponent, defineScaffoldComponent, IconRegistry, IIcon } from '@tylertech/forge';
+import { defineAppBarComponent, defineAppBarSearchComponent, defineCardComponent, defineIconComponent, defineScaffoldComponent, IAppBarComponent, IBadgeComponent, IconRegistry, IIcon } from '@tylertech/forge';
+import { debounce } from '@tylertech/forge-core';
 
 defineAppBarComponent();
 defineAppBarSearchComponent();
@@ -8,18 +9,46 @@ defineCardComponent();
 
 import * as iconsModule from '../tyler-icons.mjs';
 
-const allIcons = Object.values(iconsModule) as IIcon[];
-IconRegistry.define(allIcons);
+const ICONS_PAGE_SIZE = 100;
+const INFINITE_SCROLL_THRESHOLD = 50;
+const NUMBER_FORMAT = new Intl.NumberFormat('en-US');
 
-console.log('Icons:', allIcons);
+const _allIcons = Object.values(iconsModule) as IIcon[];
+IconRegistry.define(_allIcons);
 
-const countLabel = document.querySelector('#icon-count') as HTMLElement;
+let visibleIcons = _allIcons.slice(0, ICONS_PAGE_SIZE);
+let filteredIcons = _allIcons;
+
+console.log('Icons:', _allIcons);
+
+const appBar = document.querySelector('#app-bar') as IAppBarComponent;
+appBar.titleText = `Tyler Icons (${NUMBER_FORMAT.format(_allIcons.length)})`;
+
+const iconList = document.querySelector('.icon-list') as HTMLElement;
+const contentHeader = document.querySelector('.content-header') as HTMLElement;
+
+// Handle infinite scroll
+const scrollContainer = document.querySelector('#scroll-container') as HTMLElement;
+scrollContainer.addEventListener('scroll', () => {
+  const isScrolledBottom = scrollContainer.scrollTop + scrollContainer.clientHeight >= scrollContainer.scrollHeight - INFINITE_SCROLL_THRESHOLD;
+  if (isScrolledBottom && filteredIcons.length > visibleIcons.length) {
+    const currentLength = visibleIcons.length;
+    const nextIcons = filteredIcons.slice(currentLength, currentLength + ICONS_PAGE_SIZE);
+    nextIcons.forEach((icon: IIcon) => iconList.appendChild(buildIconCard(icon)));
+    visibleIcons = [...visibleIcons, ...nextIcons];
+  }
+}, { passive: true });
 
 function buildIconCard(icon: IIcon): HTMLDivElement {
   const iconCard = document.createElement('div');
   iconCard.classList.add('icon-card');
   iconCard.appendChild(buildIconElement(icon));
-  iconCard.appendChild(document.createTextNode(icon.name));
+
+  const iconText = document.createElement('span');
+  iconText.textContent = icon.name;
+  iconText.classList.add('forge-typography--label2', 'icon-name');
+  iconCard.appendChild(iconText);
+
   return iconCard;
 }
 
@@ -29,28 +58,50 @@ function buildIconElement(icon: IIcon): HTMLElement {
   return forgeIcon;
 }
 
-function buildIconList(icons: IIcon[]): void {
-  const iconList = document.querySelector('.icon-list') as HTMLElement;
+function renderIcons(icons: IIcon[]): void {
   iconList.innerHTML = '';
   icons.forEach((icon: IIcon) => iconList.appendChild(buildIconCard(icon)));
-  countLabel.textContent = `${icons.length}`;
 }
 
-function buildFilteredIconList(): void {
-  const filteredIcons = allIcons.filter(icon => icon.name.includes(searchField.value));
-  buildIconList(filteredIcons);
+function handleFilter(): void {
+  const searchValue = searchField.value.trim().toLowerCase();
+  filteredIcons = _allIcons.filter((icon: IIcon) => icon.name.toLowerCase().includes(searchValue));
+  visibleIcons = filteredIcons.slice(0, ICONS_PAGE_SIZE);
+  renderIcons(visibleIcons)
+  setFilteredBadge();
+
+  if (scrollContainer.scrollTop > 0) {
+    scrollContainer.scrollTo({ top: 0, behavior: 'instant' });
+  }
+}
+
+function setFilteredBadge(): void {
+  let filteredBadge = document.querySelector('#filtered-badge') as IBadgeComponent | null;
+  if (searchField.value.trim().length) {
+    if (!filteredBadge) {
+      filteredBadge = document.createElement('forge-badge') as IBadgeComponent;
+      filteredBadge.id = 'filtered-badge';
+      contentHeader.appendChild(filteredBadge);
+    }
+    filteredBadge.textContent = `Filtered: ${NUMBER_FORMAT.format(filteredIcons.length)}`;
+  } else {
+    filteredBadge?.remove();
+  }
 }
 
 // Handle searching
 const searchField = document.querySelector('input') as HTMLInputElement;
-searchField.addEventListener('keydown', buildFilteredIconList);
+searchField.addEventListener('keydown', debounce(handleFilter, 300));
 
 // Listen for clear button
 const clearButton = document.querySelector('#clear-button') as HTMLButtonElement;
 clearButton.addEventListener('click', () => {
   searchField.value = '';
-  buildIconList(allIcons);
+  filteredIcons = _allIcons;
+  visibleIcons = _allIcons.slice(0, ICONS_PAGE_SIZE);
+  renderIcons(visibleIcons);
+  setFilteredBadge();
 });
 
-// Build the initial icon list
-buildIconList(allIcons);
+// Render initial icons
+renderIcons(visibleIcons);

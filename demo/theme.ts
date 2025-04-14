@@ -3,18 +3,23 @@ const themeToggleIcon = document.querySelector('#theme-toggle-icon');
 
 type Theme = 'light' | 'dark';
 
+const THEME_KEY = '.TylerIcons.Theme';
+const THEME_ATTR = 'data-theme';
+
 function setDarkMode(): void {
-  document.documentElement.setAttribute('data-theme', 'dark');
+  localStorage.setItem(THEME_KEY, 'dark');
+  document.documentElement.setAttribute(THEME_ATTR, 'dark');
   themeToggleIcon.setAttribute('name', 'wb_sunny');
 }
 
 function setLightMode(): void {
-  document.documentElement.setAttribute('data-theme', 'light');
+  localStorage.setItem(THEME_KEY, 'light');
+  document.documentElement.setAttribute(THEME_ATTR, 'light');
   themeToggleIcon.setAttribute('name', 'brightness_3');
 }
 
 function setTheme(theme: Theme): void {
-  if (theme === 'light') {
+  if (theme === 'dark') {
     setDarkMode();
   } else {
     setLightMode();
@@ -22,9 +27,9 @@ function setTheme(theme: Theme): void {
 }
 
 themeToggleButton.addEventListener('click', () => {
-  const theme = document.documentElement.getAttribute('data-theme') as Theme;
-  setTheme(theme);
+  const theme = document.documentElement.getAttribute(THEME_ATTR) as Theme;
+  setTheme(theme === 'light' ? 'dark' : 'light');
 });
 
-const browserTheme = window.matchMedia('(prefers-color-scheme: dark)');
-setTheme(browserTheme.matches ? 'dark' : 'light');
+const localStorageTheme = localStorage.getItem(THEME_KEY) as Theme;
+setTheme(localStorageTheme ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));

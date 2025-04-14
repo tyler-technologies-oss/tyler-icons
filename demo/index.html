@@ -11,13 +11,13 @@
   </head>
   <body>
     <forge-scaffold>
-      <forge-app-bar slot="header" title-text="Tyler Icons">
+      <forge-app-bar id="app-bar" slot="header" title-text="Tyler Icons">
         <forge-icon slot="logo" name="tyler_talking_t_logo"></forge-icon>
 
         <!-- Search -->
         <forge-app-bar-search slot="center">
           <input type="text" placeholder="Search..." />
-          <forge-icon-button slot="end" id="clear-button" density="small" aria-label="Clear search" style="margin-right: 8px;">
+          <forge-icon-button slot="end" id="clear-button" density="small" aria-label="Clear search">
             <forge-icon name="clear"></forge-icon>
           </forge-icon-button>
         </forge-app-bar-search>
@@ -29,9 +29,11 @@
       </forge-app-bar>
 
       <!-- Content -->
-      <main slot="body" style="padding: 16px;">
-        <forge-card style="width: 960px;">
-          <h2 class="forge-typography--heading4">Icons (<span id="icon-count">0</span>)</h2>
+      <main slot="body" id="scroll-container">
+        <forge-card class="content">
+          <div class="content-header">
+            <h2 class="forge-typography--heading4">Icons</h2>
+          </div>
           <div class="icon-list"></div>
         </forge-card>
       </main>
