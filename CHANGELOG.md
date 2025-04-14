@@ -1,23 +1,25 @@
-# v1.19.0 (Fri Mar 28 2025)
-
-## 2.0.1
-
-### Patch Changes
-
-- d826869: support default package entry points
-
-#### 🚀 Enhancement
-
-- chore(icon): style tweaks [#66](https://github.com/tyler-technologies-oss/tyler-icons/pull/66) ([@nickonometry](https://github.com/nickonometry))
+# v2.0.1 (Mon Apr 14 2024)
 
 #### 🐛 Bug Fix
 
-- chore(icon): updated workflow version [#65](https://github.com/tyler-technologies-oss/tyler-icons/pull/65) ([@nickonometry](https://github.com/nickonometry))
-- chore(icon): added new chart_combo icon to the custom library [#64](https://github.com/tyler-technologies-oss/tyler-icons/pull/64) ([@nickonometry](https://github.com/nickonometry))
+- fix: support default package entry points
 
 #### Authors: 1
 
+- Kieran Nichols ([@DRiFTy17](https://github.com/DRiFTy17))
+
+---
+
+# v2.0.0 (Mon Apr 14 2025)
+
+#### 🚀 Enhancement
+
+- chore: icon consolidation
+
+#### Authors: 2
+
 - Nick Andrews ([@nickonometry](https://github.com/nickonometry))
+- Kieran Nichols ([@DRiFTy17](https://github.com/DRiFTy17))
 
 ---
 
