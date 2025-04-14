@@ -9,7 +9,9 @@
     "type": "git",
     "url": "https://github.com/tyler-technologies-oss/tyler-icons.git"
   },
-  "sideEffects": false,
+  "main": "./tyler-icons.mjs",
+  "module": "./tyler-icons.mjs",
+  "types": "./tyler-icons.d.ts",
   "exports": {
     ".": {
       "import": "./tyler-icons.mjs",
@@ -32,6 +34,7 @@
     "svg-to-ts": "svg-to-ts-constants",
     "compile:icons": "tsc --project tsconfig.build.json && renamer --force --find .js --replace .mjs ./tyler-icons.js",
     "generate:metadata": "node ./scripts/generate-icon-metadata.js",
+    "changeset": "changeset",
     "release": "npm run build && changeset publish"
   },
   "keywords": [
