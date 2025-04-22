@@ -1,6 +1,7 @@
 import { resolve, join, parse } from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
+import keywords from './keywords.json' assert { type: 'json' };
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 const ROOT_DIR = resolve(__dirname, '../');
@@ -30,9 +31,24 @@ function iconsFromDir(startPath, icons = []) {
     } else if (/\.svg$/.test(filename)) {
       const name = parse(filename).name;
       const data = fs.readFileSync(filename, 'utf-8');
-      icons.push({ name, data });
+      icons.push({ name, data, keywords: getKeywordsForFilename(name)});
     }
   }
 
   return icons;
 }
+
+function getKeywordsForFilename(name) {
+  const match = keywords.find(entry => entry.name === name);
+
+  if (!match) return [];
+
+  if (typeof match.keywords === 'string') {
+    // Remove commas, trim, then split by whitespace
+    return match.keywords.replace(/,/g, '').trim().split(/\s+/);
+  }
+
+  return Array.isArray(match.keywords) ? match.keywords : [];
+}
+
+
