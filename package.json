@@ -31,7 +31,7 @@
     "build": "npm-run-all optimize:svg svg-to-ts compile:icons generate:metadata",
     "optimize:svg": "svgo --quiet --recursive --final-newline --pretty --indent 2 --input ./svg",
     "package-assets": "./build-scripts/package-cdn-assets.sh",
-    "svg-to-ts": "svg-to-ts-constants",
+    "svg-to-ts": "svg-to-ts-constants && node ./scripts/fix-constants-names.js",
     "compile:icons": "tsc --project tsconfig.build.json && renamer --force --find .js --replace .mjs ./tyler-icons.js",
     "generate:metadata": "node ./scripts/generate-icon-metadata.js",
     "changeset": "changeset",
