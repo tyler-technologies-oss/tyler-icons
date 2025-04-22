@@ -1,4 +1,5 @@
-// fix-constants-names.js
+// It fixes name: '3_d_rotation' → name: '3d_rotation', by removing the underscore (_) 
+// that svg-to-ts wrongly inserts between a digit and a letter at the start of the filename.
 import fs from 'fs';
 
 const path = './dist/tyler-icons.ts'; // adjust if needed
