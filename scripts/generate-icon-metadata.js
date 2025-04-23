@@ -31,24 +31,14 @@ function iconsFromDir(startPath, icons = []) {
     } else if (/\.svg$/.test(filename)) {
       const name = parse(filename).name;
       const data = fs.readFileSync(filename, 'utf-8');
-      icons.push({ name, data, keywords: getKeywordsForFilename(name)});
+      icons.push({ name, data, keywords: getKeywordsForIcon(name)});
     }
   }
 
   return icons;
 }
 
-function getKeywordsForFilename(name) {
-  const match = keywords.find(entry => entry.name === name);
-
-  if (!match) return [];
-
-  if (typeof match.keywords === 'string') {
-    // Remove commas, trim, then split by whitespace
-    return match.keywords.replace(/,/g, '').trim().split(/\s+/);
-  }
-
-  return Array.isArray(match.keywords) ? match.keywords : [];
+function getKeywordsForIcon(iconName) {
+  const match = keywords.find(entry => entry.name === iconName);
+  return match ? match.keywords : [];
 }
-
-
