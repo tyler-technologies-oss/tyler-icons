@@ -1,4 +1,4 @@
----
+--- 
 "@tylertech/tyler-icons": patch
 ---
 
