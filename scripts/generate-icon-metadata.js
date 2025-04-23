@@ -1,4 +1,4 @@
-import { resolve, join, parse } from 'path';
+import { resolve, join, parse } from 'path'; 
 import fs from 'fs';
 import { fileURLToPath } from 'url';
 import keywords from './keywords.json' assert { type: 'json' };
