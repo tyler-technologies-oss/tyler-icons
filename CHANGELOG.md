@@ -1,5 +1,13 @@
 # v2.0.1 (Mon Apr 14 2024)
 
+## 2.0.2
+
+### Patch Changes
+
+- 2570c02: various icon fixes
+- 075b842: add keywords to metadata
+- f2ac87f: fix metadata
+
 #### 🐛 Bug Fix
 
 - fix: support default package entry points
