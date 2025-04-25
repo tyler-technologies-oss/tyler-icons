@@ -1,4 +1,4 @@
-# v2.0.1 (Mon Apr 14 2024)
+# @tylertech/tyler-icons
 
 ## 2.0.2
 
@@ -8,13 +8,11 @@
 - 075b842: add keywords to metadata
 - f2ac87f: fix metadata
 
-#### 🐛 Bug Fix
+## 2.0.1
+
+### Patch Changes
 
 - fix: support default package entry points
-
-#### Authors: 1
-
-- Kieran Nichols ([@DRiFTy17](https://github.com/DRiFTy17))
 
 ---
 
