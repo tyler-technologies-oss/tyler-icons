@@ -7,13 +7,13 @@ defineIconComponent();
 defineScaffoldComponent();
 defineCardComponent();
 
-import * as iconsModule from '../tyler-icons.mjs';
+import * as iconsModule from '../tyler-icons-metadata.json' with { type: 'json' };
 
 const ICONS_PAGE_SIZE = 100;
 const INFINITE_SCROLL_THRESHOLD = 50;
 const NUMBER_FORMAT = new Intl.NumberFormat('en-US');
 
-const _allIcons = Object.values(iconsModule) as IIcon[];
+const _allIcons = Object.values(iconsModule.default) as IIcon[];
 IconRegistry.define(_allIcons);
 
 let visibleIcons = _allIcons.slice(0, ICONS_PAGE_SIZE);
@@ -60,6 +60,13 @@ function buildIconElement(icon: IIcon): HTMLElement {
 
 function renderIcons(icons: IIcon[]): void {
   iconList.innerHTML = '';
+  if (icons.length === 0) {
+    const noIconsMessage = document.createElement('div');
+    noIconsMessage.classList.add('forge-typography--label2');
+    noIconsMessage.textContent = 'No icons found';
+    iconList.appendChild(noIconsMessage);
+    return;
+  }
   icons.forEach((icon: IIcon) => iconList.appendChild(buildIconCard(icon)));
 }
 

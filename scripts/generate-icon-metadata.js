@@ -13,7 +13,7 @@ try {
   const icons = iconsFromDir(SVG_DIR);
   fs.writeFileSync(join(OUTPUT_DIR, `${OUTPUT_FILENAME}`), JSON.stringify(icons, undefined, 2));
 } catch (e) {
-  console.error('An error occurred while generating the metadata', e);
+  console.error('An error occurred while generating the metadata.', e);
 }
 
 function iconsFromDir(startPath, icons = []) {
