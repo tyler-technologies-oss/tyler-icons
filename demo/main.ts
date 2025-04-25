@@ -1,4 +1,4 @@
-import { defineAppBarComponent, defineAppBarSearchComponent, defineCardComponent, defineIconComponent, defineScaffoldComponent, IAppBarComponent, IBadgeComponent, IconRegistry, IIcon } from '@tylertech/forge';
+import { defineAppBarComponent, defineAppBarSearchComponent, defineCardComponent, defineIconComponent, defineScaffoldComponent, IAppBarComponent, IBadgeComponent, IconRegistry } from '@tylertech/forge';
 import { debounce } from '@tylertech/forge-core';
 
 defineAppBarComponent();
@@ -9,11 +9,17 @@ defineCardComponent();
 
 import * as iconsModule from '../tyler-icons-metadata.json' with { type: 'json' };
 
+interface Icon {
+  name: string;
+  data: string;
+  keywords: string[];
+}
+
 const ICONS_PAGE_SIZE = 100;
 const INFINITE_SCROLL_THRESHOLD = 50;
 const NUMBER_FORMAT = new Intl.NumberFormat('en-US');
 
-const _allIcons = Object.values(iconsModule.default) as IIcon[];
+const _allIcons = Object.values(iconsModule.default) as Icon[];
 IconRegistry.define(_allIcons);
 
 let visibleIcons = _allIcons.slice(0, ICONS_PAGE_SIZE);
@@ -34,12 +40,12 @@ scrollContainer.addEventListener('scroll', () => {
   if (isScrolledBottom && filteredIcons.length > visibleIcons.length) {
     const currentLength = visibleIcons.length;
     const nextIcons = filteredIcons.slice(currentLength, currentLength + ICONS_PAGE_SIZE);
-    nextIcons.forEach((icon: IIcon) => iconList.appendChild(buildIconCard(icon)));
+    nextIcons.forEach(icon => iconList.appendChild(buildIconCard(icon)));
     visibleIcons = [...visibleIcons, ...nextIcons];
   }
 }, { passive: true });
 
-function buildIconCard(icon: IIcon): HTMLDivElement {
+function buildIconCard(icon: Icon): HTMLDivElement {
   const iconCard = document.createElement('div');
   iconCard.classList.add('icon-card');
   iconCard.appendChild(buildIconElement(icon));
@@ -52,13 +58,13 @@ function buildIconCard(icon: IIcon): HTMLDivElement {
   return iconCard;
 }
 
-function buildIconElement(icon: IIcon): HTMLElement {
+function buildIconElement(icon: Icon): HTMLElement {
   const forgeIcon = document.createElement('forge-icon');
   forgeIcon.name = icon.name;
   return forgeIcon;
 }
 
-function renderIcons(icons: IIcon[]): void {
+function renderIcons(icons: Icon[]): void {
   iconList.innerHTML = '';
   if (icons.length === 0) {
     const noIconsMessage = document.createElement('div');
@@ -67,12 +73,15 @@ function renderIcons(icons: IIcon[]): void {
     iconList.appendChild(noIconsMessage);
     return;
   }
-  icons.forEach((icon: IIcon) => iconList.appendChild(buildIconCard(icon)));
+  icons.forEach(icon => iconList.appendChild(buildIconCard(icon)));
 }
 
 function handleFilter(): void {
   const searchValue = searchField.value.trim().toLowerCase();
-  filteredIcons = _allIcons.filter((icon: IIcon) => icon.name.toLowerCase().includes(searchValue));
+  filteredIcons = _allIcons.filter(icon => {
+    return icon.name.toLowerCase().includes(searchValue) ||
+           icon.keywords.some(keyword => keyword.toLowerCase().includes(searchValue));
+  });
   visibleIcons = filteredIcons.slice(0, ICONS_PAGE_SIZE);
   renderIcons(visibleIcons)
   setFilteredBadge();
