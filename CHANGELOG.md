@@ -1,5 +1,11 @@
 # @tylertech/tyler-icons
 
+## 2.0.3
+
+### Patch Changes
+
+- ba3ccae: Fixed a few issues with the naming of icons as well and their associated \_alt icon
+
 ## 2.0.2
 
 ### Patch Changes
