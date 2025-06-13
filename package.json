@@ -17,7 +17,7 @@
       "import": "./tyler-icons.mjs",
       "types": "./tyler-icons.d.ts"
     },
-    "./tyler-icons-metadata.json": "./dist/tyler-icons-metadata.json"
+    "./tyler-icons-metadata.json": "./tyler-icons-metadata.json"
   },
   "files": [
     "tyler-icons.mjs",
