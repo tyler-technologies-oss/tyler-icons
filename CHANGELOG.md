@@ -1,5 +1,11 @@
 # @tylertech/tyler-icons
 
+## 2.0.4
+
+### Patch Changes
+
+- 07c8d47: fix metadata file path in exports
+
 ## 2.0.3
 
 ### Patch Changes
