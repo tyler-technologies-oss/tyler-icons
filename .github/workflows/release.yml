@@ -47,7 +47,7 @@ jobs:
           NPM_TOKEN: ${{ secrets.FORGE_NPM_TOKEN }}
 
       - name: Package CDN Assets
-        if: steps.changesets.outputs.published == 'true'
+       
         id: package-assets
         run: npm run package-assets
 
@@ -64,7 +64,6 @@ jobs:
     name: Publish Assets to CDN
     needs: version
     uses: tyler-technologies-oss/forge-automation-shared/.github/workflows/wf-publish-cloudfront-assets.yml@v2.10.3
-    if: needs.version.outputs.published == 'true'
     with:
       ARTIFACT_NAME: "deployment-assets"
       AWS_REGION: "us-east-1"
