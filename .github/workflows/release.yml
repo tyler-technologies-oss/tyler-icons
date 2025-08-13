@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - chore/migrate-to-terraform-deploy
   workflow_dispatch:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
@@ -69,6 +70,6 @@ jobs:
       AWS_REGION: "us-east-1"
       MAX_CLOUDFRONT_INVALIDATIONS: 25
     secrets:
-      AWS_IAM_ROLE: ${{ secrets.AWS_IAM_ROLE }}
-      AWS_S3_BUCKET_NAME: ${{ secrets.AWS_S3_BUCKET }}
-      AWS_CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION }}
+      AWS_IAM_ROLE: arn:aws:iam::505039608154:role/forge-new-github-oidc
+      AWS_S3_BUCKET_NAME: forge-docs-assets-forge-new-cdn-us-east-1
+      AWS_CLOUDFRONT_DISTRIBUTION_ID: E1ODJUI9ONGIQ8
