@@ -1,5 +1,11 @@
 # @tylertech/tyler-icons
 
+## 2.1.0
+
+### Minor Changes
+
+- 8321dd0: New MCP icon
+
 ## 2.0.4
 
 ### Patch Changes
