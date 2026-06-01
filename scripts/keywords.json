@@ -12944,6 +12944,14 @@
     "keywords": ["equal sign", "equals symbol", "math symbol", "equation", "mathematical expression", "algebraic notation", "sign of equality", "balance sign", "symmetry concept", "numerical comparison"]
   },
   {
+    "name": "equal_circle",
+    "keywords": ["equal sign", "equals symbol", "math symbol", "equation", "mathematical expression", "algebraic notation", "sign of equality", "balance sign", "symmetry concept", "numerical comparison"]
+  },
+  {
+    "name": "equal_circle_outline",
+    "keywords": ["equal sign", "equals symbol", "math symbol", "equation", "mathematical expression", "algebraic notation", "sign of equality", "balance sign", "symmetry concept", "numerical comparison"]
+  },
+  {
     "name": "eye_minus",
     "keywords": ["eye", "c", "tv", "channel", "broadcast", "media", "viewer", "watch", "news", "logo", "entertainment"]
   },
