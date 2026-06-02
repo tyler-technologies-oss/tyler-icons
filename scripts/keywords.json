@@ -34954,5 +34954,85 @@
   {
     "name": "headset_off",
     "keywords": ["no smoking sign", "prohibited symbols", "cigarette restriction", "smoking ban", "health hazard warning", "safety alert", "public notice", "environmental protection", "smoke detector", "no fire hazard"]
-  }  
+  },
+  {
+    "name": "add_evidence",
+    "keywords": ["fingerprint plus sign", "add fingerprint icon", "add evidence", "add evidence request", "request evidence", "submit evidence", "lab request", "evidence submission", "evidence analysis request", "case evidence", "forensic request", "evidence collection", "crime lab"]
+  },
+  {
+    "name": "booking",
+    "keywords": ["booking", "booking record", "arrest record", "inmate record", "jail booking", "jail", "criminal booking", "offender record", "booking report", "prisoner record", "intake", "custody", "detention"]
+  },
+  {
+    "name": "cash_transfer",
+    "keywords": ["cash transfer", "money transfer", "fund transfer", "transfer funds", "move money", "financial transaction", "account transfer", "ledger transfer", "payment transfer", "currency exchange", "narcotics fund", "asset forfeiture", "seized funds"]
+  },
+  {
+    "name": "car_crash",
+    "keywords": ["car crash", "crash", "vehicle crash", "car impact lines", "vehicle collision", "car accident", "collision", "traffic accident", "auto accident", "accident report", "motor vehicle accident", "MVA", "traffic incident"]
+  },
+  {
+    "name": "fingerprint_scan",
+    "keywords": ["fingerprint scan", "biometric data", "fingerprint transfer", "export fingerprint", "biometric scan", "scan fingerprint", "fingerprint machine", "booking fingerprints", "fingerprint export", "livescan", "biometric identification", "AFIS"]
+  },
+  {
+    "name": "flask_exclamation",
+    "keywords": ["flask exclamation", "hazmat alert", "chemical warning", "hazardous materials", "laboratory beaker", "safety warning", "chemical hazard", "dangerous materials", "toxic substance", "emergency response", "first responder alert"]
+  },
+  {
+    "name": "folder_multiple_global",
+    "keywords": ["global items", "globe folders", "shared entities", "global records", "business records", "universal items", "cross-reference data", "system-wide entities", "global database", "master data", "centralized records", "enterprise data"]
+  },
+  {
+    "name": "gang",
+    "keywords": ["gang", "gang record", "criminal organization", "street gang", "gang member", "organized crime", "gang intelligence", "criminal group", "gang unit", "gang affiliation", "gang tracking", "criminal enterprise"]
+  },
+  {
+    "name": "gang_member",
+    "keywords": ["gang member", "gang member record", "gang associate", "gang affiliate", "gang individual", "gang intelligence", "person of interest", "gang affiliation", "criminal associate", "gang documentation", "gang profile", "gang database"]
+  },
+  {
+    "name": "invoice_alarm",
+    "keywords": ["alarm invoice", "alarm billing", "alarm bill", "invoice notification", "invoice bell", "alarm statement", "alarm service billing", "monitoring invoice", "alarm payment", "invoice bell ring", "security billing", "false alarm fee"]
+  },
+  {
+    "name": "permit_alarm",
+    "keywords": ["alarm permit", "ID card bell", "card bell ring", "account card alarm", "alarm registration", "security permit", "permit card", "alarm system permit", "notification bell", "alarm license", "alarm system registration", "municipal alarm permit"]
+  },
+  {
+    "name": "permit_gun",
+    "keywords": ["gun permit", "ID card pistol", "card gun", "firearm permit", "concealed carry permit", "weapon permit", "pistol license", "handgun permit", "firearm license", "carry permit", "CCW", "weapons license", "firearm registration"]
+  },
+  {
+    "name": "photo_lineup",
+    "keywords": ["photo lineup", "photo identification", "suspect lineup", "identification lineup", "witness identification", "mugshot lineup", "police lineup", "suspect identification", "photographic lineup", "person numbers", "six-pack", "photo array", "eyewitness identification"]
+  },
+  {
+    "name": "pill_search",
+    "keywords": ["narcotics investigation", "pill magnifying glass", "drug investigation", "pill search", "controlled substance investigation", "drug case", "narcotics case", "substance investigation", "drug enforcement", "pharmaceutical investigation", "DEA", "drug trafficking"]
+  },
+  {
+    "name": "regenerate_billing",
+    "keywords": ["refresh", "dollar bill refresh", "circular arrow money", "regenerate billing", "refresh invoice", "recalculate billing", "cash sync", "financial transaction", "billing adjustment", "payment recalculation", "invoice regenerate", "billing update"]
+  },
+  {
+    "name": "renumber",
+    "keywords": ["refresh", "renumber", "change number", "refresh hashtag", "update ticket number", "correct number", "fix number", "identifier correction", "ticket renumber", "reference number change", "alphanumeric edit", "citation number", "ticket correction"]
+  },
+  {
+    "name": "script_scale_balance",
+    "keywords": ["warrant", "arrest warrant", "search warrant", "court order", "legal document", "script scales", "document scales justice", "bench warrant", "active warrant", "outstanding warrant", "judicial order", "warrant tracking"]
+  },
+  {
+    "name": "script_shield_star",
+    "keywords": ["protection order", "protective order", "restraining order", "court order", "legal protection", "order of protection", "victim protection", "document shield star", "script shield star", "domestic violence order", "no contact order", "harassment order"]
+  },
+  {
+    "name": "shield_hand_left",
+    "keywords": ["use of force", "force report", "police shield", "officer action", "force incident", "law enforcement action", "physical force", "force documentation", "hand in shield", "shield hand", "force tracking", "officer accountability"]
+  },
+  {
+    "name": "trash_can_recycle",
+    "keywords": ["trash can recycle", "dispose", "disposal", "trash can", "recycle", "dispose item", "discard", "waste management", "return to owner", "destroy evidence", "evidence disposal", "property disposition", "item removal"]
+  }
 ]
