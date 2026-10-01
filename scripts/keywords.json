@@ -31456,6 +31456,10 @@
     "keywords": ["document", "download", "file", "arrow", "icon", "upload", "information", "data", "save", "progress"]
   },
   {
+    "name": "circle_dotted",
+    "keywords": ["circle", "dotted line", "dashed outline", "shape", "symbol", "black and white", "geometric", "pattern", "placeholder", "abstract"]
+  },
+  {
     "name": "circle_outline",
     "keywords": ["circle", "black", "white background", "minimalist design", "abstract art", "geometric shapes", "simple shape", "monochrome photography", "empty frame", "clean aesthetic"]
   },
