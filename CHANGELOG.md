@@ -1,5 +1,11 @@
 # @tylertech/tyler-icons
 
+## 2.3.0
+
+### Minor Changes
+
+- 69621b9: feat: add circle_dotted icon
+
 ## 2.2.0
 
 ### Minor Changes
